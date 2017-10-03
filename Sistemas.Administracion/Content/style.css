@@ -1,0 +1,360 @@
+.epis-jumbotron h1
+{
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.text-id
+{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+body
+{
+    background-color: #263238;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+}
+
+
+.epis--menu-inverse
+{
+    background-color: #263238;
+    border-color: #263238;
+    text-transform: uppercase;
+    color: #b0bec5;
+    font-weight: bold;
+}
+
+.epis--menu-inverse .navbar-brand
+{
+    font-size: 14px;
+}
+
+.epis--menu-inverse .navbar-collapse
+{
+    border-top: none !important;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.epis--menu-inverse .dropdown-menu > li > a,
+.epis--menu-inverse .dropdown-menu > li > a:focus,
+.epis--menu-inverse .dropdown-menu > li > a:hover
+{
+    font-weight: bold;
+    font-size: 10px;
+}
+
+
+.epis--menu-inverse .navbar-nav > .open > a,
+.epis--menu-inverse .navbar-nav > .open > a:focus,
+.epis--menu-inverse .navbar-nav > .open > a:hover
+{
+    background-color: #2c3940;
+    color: #ECEFF1;
+}
+
+
+
+.breadcrumb
+{
+    background-color: #2c3940;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.breadcrumb > li + li:before
+{
+    content: "-";
+    font-weight: bold;
+    font-size: 14px;
+    color: #009688;
+}
+
+
+
+
+
+.breadcrumb a
+{
+    color: #009688;
+    text-decoration: none !important;
+}
+
+.breadcrumb a:hover
+{
+    color: #26a69a;
+}
+
+.breadcrumb > .active
+{
+    font-size: 12px;
+    color: #b0bec5;
+}
+
+
+
+
+
+/*
+    epis--panel-indice 
+*/
+
+.epis--panel-indice
+{
+    border-radius: 0;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.epis--panel-indice .panel-heading
+{
+    font-size: 11px;
+    font-weight: bold;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: #1E88E5;
+    height: 50px;
+    text-transform: uppercase;
+    line-height: 40px;
+    color: #ECEFF1;
+    margin-bottom: 2px;
+}
+
+.epis--panel-indice .list-group-item
+{
+    background-color: #2c3940 !important;
+    border: none;
+    border-left: 4px solid #1E88E5 !important;
+    margin-bottom: 2px;
+    border-radius: 0 !important;
+}
+
+.epis--panel-indice .list-group-item .list-group-item-heading
+{
+    color: #b0bec5 !important;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.epis--panel-indice .list-group-item .list-group-item-text
+{
+    color: #b0bec5 !important;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.epis--panel-indice .list-group-item:hover .list-group-item-heading
+{
+    color: #ECEFF1 !important;
+}
+
+.epis--panel-indice .list-group-item:hover .list-group-item-text
+{
+    color: #ECEFF1 !important;
+}
+
+.epis--panel-indice .list-group-item.active .list-group-item-heading
+{
+    color: #1E88E5 !important;
+}
+
+.epis--panel-indice .list-group-item.active .list-group-item-text
+{
+    color: #1E88E5 !important;
+}
+
+/*
+    epis--panel-tabla 
+*/
+
+.epis--panel-tabla
+{
+    border-radius: 0;
+    background-color: transparent;
+    border-color: transparent;
+    color: #ECEFF1;
+}
+
+.epis--panel-tabla .panel-heading
+{
+    font-size: 11px;
+    font-weight: bold;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: #2c3940;
+    height: 30px;
+    text-transform: uppercase;
+    line-height: 20px;
+    color: #ECEFF1;
+    margin-bottom: 2px;
+}
+
+.epis--panel-tabla .panel-heading span.badge
+{
+    margin-left: 5px;
+    border-radius: 0;
+    color: #ECEFF1;
+    background-color: #673AB7;
+}
+
+.epis--panel-tabla .table
+{
+    color: #ECEFF1;
+    font-size: 12px;
+}
+
+.epis--panel-tabla .table thead
+{
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.epis--panel-tabla .table > thead > tr > th
+{
+    border-bottom: none;
+}
+
+.epis--panel-tabla .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th
+{
+    border-top: 1px solid #37474F;
+}
+
+.epis--panel-tabla .table-hover > tbody > tr:hover
+{
+    background-color: #37474F;
+}
+
+.epis--panel-tabla tbody tr td:last-child, .epis--panel-tabla thead tr th:last-child
+{
+    width: 20% !important;
+    text-align: center;
+}
+
+.epis--panel-tabla .btn
+{
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.epis--panel-tabla .btn-success
+{
+    color: #ECEFF1 !important;
+    background-color: #009688 !important;
+    border-color: #009688 !important;
+}
+
+.epis--panel-tabla .btn-warning
+{
+    color: #ECEFF1 !important;
+    background-color: #9C27B0 !important;
+    border-color: #9C27B0 !important;
+}
+
+.epis--panel-tabla .btn-danger
+{
+    color: #ECEFF1 !important;
+    background-color: #F44336 !important;
+    border-color: #F44336 !important;
+}
+
+.epis--panel-tabla .label-primary
+{
+    color: #ECEFF1;
+    background-color: #4CAF50;
+}
+
+.epis--panel-tabla .label
+{
+    font-size: 11px;
+    color: #ECEFF1 !important;
+    border-radius: 0 !important;
+}
+
+
+/*
+    epis--tab-pagina
+*/
+
+.epis--tab-pagina
+{
+    border-bottom: none;
+}
+
+.epis--tab-pagina > li > a
+{
+    color: #ECEFF1 !important;
+    background-color: #2c3940 !important;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none !important;
+    border-radius: 0;
+    margin-bottom: 2px;
+}
+
+.epis--tab-pagina > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover
+{
+    background-color: #1E88E5 !important;
+}
+
+
+
+
+
+
+
+
+
+label
+{
+    font-weight: bold;
+}
+
+.modal-body
+{
+    padding: 5px;
+}
+
+.modal-body > .panel
+{
+    margin: 0;
+}
+
+.form-control
+{
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.modal-content
+{
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+
+
+.btn
+{
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    outline: none !important;
+}
+

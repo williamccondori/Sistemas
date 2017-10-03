@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=100, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title - Ingeniería de Sistemas</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+</head>
+
+<body ng-app="EpisApp">
+    <nav class="navbar navbar-inverse navbar-static-top epis--menu-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#epis--menu">
+                    <span class="sr-only">Menú</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Ingeniería de Sistemas</a>
+            </div>
+            <div class="collapse navbar-collapse" id="epis--menu">
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("Modulos", "Portada")">Módulos</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@Url.Action("Configuracion", "Portada")">Configuración</a></li>
+                    <li class="dropdown">
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown">USUARIO <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Mi perfil</a></li>
+                            <li><a href="@Url.Action("CerrarSesion", "Portada")">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-summernote/0.8.1/angular-summernote.min.js"></script>
+    <script src="~/Angular/Utilidades/UtilidadesBootstrap.js"></script>
+    <script src="~/Angular/Utilidades/UtilidadesDefinicion.js"></script>
+    <script src="~/Angular/app.js"></script>
+    <script src="~/Angular/config.js"></script>
+    <script src="~/Angular/Factories/BaseFactory.js"></script>
+    <script src="~/Angular/Factories/UsuarioFactory.js"></script>
+    <script src="~/Angular/Controllers/UsuarioController.js"></script>
+    @RenderSection("scripts", false)
+</body>
+
+</html>

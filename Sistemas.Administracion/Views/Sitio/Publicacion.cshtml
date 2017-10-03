@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Publicaciones";
+}
+
+<section>
+    <ol class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Portada")">Inicio</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Modulos", "Portada")">Módulos</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Sitio")">Sitio web</a>
+        </li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+<section ng-controller="PublicacionController" ng-init="Iniciar()">
+    <div class="row">
+        <div class="col-xs-24 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default epis--panel-indice">
+                <div class="panel-heading">
+                    Sitio web
+                </div>
+                <div class="list-group">
+                    <a href="@Url.Action("Index", "Sitio")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Inicio</h4>
+                        <p class="list-group-item-text">Gestión del sitio web.</p>
+                    </a>
+                    <a href="@Url.Action("Publicacion", "Sitio")" class="list-group-item active">
+                        <h4 class="list-group-item-heading">Publicaciones</h4>
+                        <p class="list-group-item-text">Gestión de las publicaciones.</p>
+                    </a>
+                    <a href="@Url.Action("Resena", "Sitio")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Reseñas</h4>
+                        <p class="list-group-item-text">Gestión de las reseñas.</p>
+                    </a>
+                    <a href="@Url.Action("Configuracion", "Sitio")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Configuración</h4>
+                        <p class="list-group-item-text">Configuración de datos del sitio web.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-24 col-sm-18 col-md-18 col-lg-18">
+            <div class="panel panel-default epis--panel-tabla">
+                <div class="panel-heading">
+                    Publicaciones <span class="badge" ng-bind="Publicaciones.length"></span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th class="col-xs-2">Código</th>
+                                <th>Titulo</th>
+                                <th><button class="btn btn-xs btn-success" ng-click="CrearPublicacion()">Crear</button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="publicacion in Publicaciones">
+                                <td><span ng-bind="publicacion.Id"></span></td>
+                                <td><span ng-bind="publicacion.Titulo"></span></td>
+                                <td>
+                                    <button class="btn btn-xs btn-warning">Modificar</button>
+                                    <button class="btn btn-xs btn-danger">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalPublicacion">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Ingrese la información de los grados académicos
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label>Código:</label>
+                                        <input type="text" class="form-control" ng-model="Publicacion.Id" ng-readonly="true">
+                                    </div>
+                                </div>
+                                <div class="col-xs-24 col-sm-10 col-md-10 col-lg-10">
+                                    <div class="form-group">
+                                        <label>Tipo de publicación:</label>
+                                        <input type="text" class="form-control" ng-model="Publicacion.IdTipoPublicacion">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-24 col-sm-10 col-md-10 col-lg-10">
+                                    <div class="form-group">
+                                        <label>Reseña:</label>
+
+                                        <div summernote></div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-xs-24 col-sm-10 col-md-10 col-lg-10">
+                                    <div class="form-group">
+                                        <label>Título:</label>
+                                        <input type="text" class="form-control" ng-model="Publicacion.Fecha">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer text-right">
+                            <button type="button" class="btn btn-default" ng-click="CerrarPublicacion()">Cerrar</button>
+                            <button type="button" class="btn btn-success" ng-click="GuardarPublicacion()"><span ng-bind="TextoBotonGuardar()"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script src="~/Angular/Factories/PublicacionFactory.js"></script>
+    <script src="~/Angular/Controllers/PublicacionController.js"></script>
+}

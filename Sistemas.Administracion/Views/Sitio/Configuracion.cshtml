@@ -1,0 +1,427 @@
+﻿@{
+    ViewBag.Title = "Configuración";
+}
+
+<section>
+    <ol class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Portada")">Inicio</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Modulos", "Portada")">Módulos</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Sitio")">Sitio web</a>
+        </li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+<section>
+    <div class="row">
+        <div class="col-xs-24 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default epis--panel-indice">
+                <div class="panel-heading">
+                    Sitio web
+                </div>
+                <div class="list-group">
+                    <a href="@Url.Action("Index", "Sitio")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Inicio</h4>
+                        <p class="list-group-item-text">Gestión del sitio web.</p>
+                    </a>
+                    <a href="@Url.Action("Publicacion", "Sitio")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Publicaciones</h4>
+                        <p class="list-group-item-text">Gestión de las publicaciones.</p>
+                    </a>
+                    <a href="@Url.Action("Resena", "Sitio")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Reseñas</h4>
+                        <p class="list-group-item-text">Gestión de las reseñas.</p>
+                    </a>
+                    <a href="@Url.Action("Configuracion", "Sitio")" class="list-group-item active">
+                        <h4 class="list-group-item-heading">Configuración</h4>
+                        <p class="list-group-item-text">Configuración de datos del sitio web.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-24 col-sm-18 col-md-18 col-lg-18">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs epis--tab-pagina" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#TipoColeccion" aria-controls="TipoColeccion" role="tab" data-toggle="tab">Tipos de colección</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#Caracteristica" aria-controls="Caracteristica" role="tab" data-toggle="tab">Caracteristicas</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="TipoColeccion">
+                        <section ng-controller="TipoColeccionController" ng-init="Iniciar()">
+                            <div class="panel panel-default epis--panel-tabla">
+                                <div class="panel-heading">
+                                    Tipos de colección
+                                </div>
+                                <div class="panel-body">
+                                    Aquí se especifican los tipos de colección de datos.
+                                </div>
+                                <div class="panel-heading">
+                                    Tipos de publicación <span class="badge" ng-bind="TiposPublicacion.length"></span>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-condensed table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-2">Código</th>
+                                                <th>Descripción</th>
+                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearTipoPublicacion()">Crear</button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="tipoPublicacion in TiposPublicacion">
+                                                <td><span class="label label-primary" ng-bind="tipoPublicacion.Id"></span></td>
+                                                <td><span ng-bind="tipoPublicacion.Descripcion"></span></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarTipoPublicacion(tipoPublicacion)">Modificar</button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarTipoPublicacion(tipoPublicacion)">Eliminar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-heading">
+                                    Tipos de detalle de publicación <span class="badge" ng-bind="TiposDetallePublicacion.length"></span>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-condensed table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-2">Código</th>
+                                                <th>Descripción</th>
+                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearTipoDetallePublicacion()">Crear</button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="tipoDetallePublicacion in TiposDetallePublicacion">
+                                                <td><span class="label label-primary" ng-bind="tipoDetallePublicacion.Id"></span></td>
+                                                <td><span ng-bind="tipoDetallePublicacion.Descripcion"></span></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarTipoDetallePublicacion(tipoDetallePublicacion)">Modificar</button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarTipoDetallePublicacion(tipoDetallePublicacion)">Eliminar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-heading">
+                                    Tipos de reseña <span class="badge" ng-bind="TiposResena.length"></span>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-condensed table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-2">Código</th>
+                                                <th>Descripción</th>
+                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearTipoResena()">Crear</button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="tipoResena in TiposResena">
+                                                <td><span class="label label-primary" ng-bind="tipoResena.Id"></span></td>
+                                                <td><span ng-bind="tipoResena.Descripcion"></span></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarTipoResena(tipoResena)">Modificar</button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarTipoResena(tipoResena)">Eliminar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="ModalTipoPublicacion">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    Ingrese la información de los tipos de publicación
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-xs-24 col-sm-4 col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Código:</label>
+                                                                <input type="text" class="form-control" ng-model="TipoPublicacion.Id" ng-readonly="ModificarCodigo()" ng-maxlength="2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-24 col-sm-20 col-md-20 col-lg-20">
+                                                            <div class="form-group">
+                                                                <label>Descripción:</label>
+                                                                <input type="text" class="form-control" ng-model="TipoPublicacion.Descripcion">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer text-right">
+                                                    <button type="button" class="btn btn-default" ng-click="CerrarTipoPublicacion()">Cerrar</button>
+                                                    <button type="button" class="btn btn-success" ng-click="GuardarTipoPublicacion()"><span ng-bind="TextoBotonGuardar()"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="ModalTipoDetallePublicacion">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    Ingrese la información de los tipos de detalle de publicación
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-xs-24 col-sm-4 col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Código:</label>
+                                                                <input type="text" class="form-control" ng-model="TipoDetallePublicacion.Id" ng-readonly="ModificarCodigo()" ng-maxlength="2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-24 col-sm-20 col-md-20 col-lg-20">
+                                                            <div class="form-group">
+                                                                <label>Descripción:</label>
+                                                                <input type="text" class="form-control" ng-model="TipoDetallePublicacion.Descripcion">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer text-right">
+                                                    <button type="button" class="btn btn-default" ng-click="CerrarTipoDetallePublicacion()">Cerrar</button>
+                                                    <button type="button" class="btn btn-success" ng-click="GuardarTipoDetallePublicacion()"><span ng-bind="TextoBotonGuardar()"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="ModalTipoResena">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    Ingrese la información de los tipos de reseñas
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-xs-24 col-sm-4 col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Código:</label>
+                                                                <input type="text" class="form-control" ng-model="TipoResena.Id" ng-readonly="ModificarCodigo()" ng-maxlength="2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-24 col-sm-20 col-md-20 col-lg-20">
+                                                            <div class="form-group">
+                                                                <label>Descripción:</label>
+                                                                <input type="text" class="form-control" ng-model="TipoResena.Descripcion">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer text-right">
+                                                    <button type="button" class="btn btn-default" ng-click="CerrarTipoResena()">Cerrar</button>
+                                                    <button type="button" class="btn btn-success" ng-click="GuardarTipoResena()"><span ng-bind="TextoBotonGuardar()"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="Caracteristica">
+                        <section ng-controller="CaracteristicaController" ng-init="Iniciar()">
+                            <div class="panel panel-default epis--panel-tabla">
+                                <div class="panel-heading">
+                                    Caracteristicas
+                                </div>
+                                <div class="panel-body">
+                                    Puede especificar caracteristicas adicionales a las colecciones de datos.
+                                </div>
+                                <div class="panel-heading">
+                                    Grados académicos <span class="badge" ng-bind="GradosAcademicos.length"></span>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-condensed table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-2">Código</th>
+                                                <th>Grado académico</th>
+                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearGradoAcademico()">Crear</button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="gradoAcademico in GradosAcademicos">
+                                                <td><span class="text-id" ng-bind="gradoAcademico.Id"></span></td>
+                                                <td><span ng-bind="gradoAcademico.Titulo"></span></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarGradoAcademico(gradoAcademico)">Modificar</button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarGradoAcademico(gradoAcademico)">Eliminar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-heading">
+                                    Autores de reseña <span class="badge" ng-bind="AutoresResena.length"></span>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-condensed table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-2">Código</th>
+                                                <th>Grado académico</th>
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearAutorResena()">Crear</button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="autorResena in AutoresResena">
+                                                <td><span class="text-id" ng-bind="autorResena.Id"></span></td>
+                                                <td><span ng-bind="autorResena.GradoAcademico.Titulo"></span></td>
+                                                <td><span ng-bind="autorResena.Nombre"></span></td>
+                                                <td><span ng-bind="autorResena.Apellido"></span></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarAutorResena(autorResena)">Modificar</button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarAutorResena(autorResena)">Eliminar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="ModalGradoAcademico">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    Ingrese la información de los grados académicos
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-xs-24 col-sm-4 col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Código:</label>
+                                                                <input type="text" class="form-control" ng-model="GradoAcademico.Id" ng-readonly="true">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-24 col-sm-4 col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Abreviatura:</label>
+                                                                <input type="text" class="form-control" ng-model="GradoAcademico.Abreviatura">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-24 col-sm-16 col-md-16 col-lg-16">
+                                                            <div class="form-group">
+                                                                <label>Título:</label>
+                                                                <input type="text" class="form-control" ng-model="GradoAcademico.Titulo">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer text-right">
+                                                    <button type="button" class="btn btn-default" ng-click="CerrarGradoAcademico()">Cerrar</button>
+                                                    <button type="button" class="btn btn-success" ng-click="GuardarGradoAcademico()"><span ng-bind="TextoBotonGuardar()"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="ModalAutorResena">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    Ingrese la información de los autores de reseña
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-xs-24 col-sm-4 col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Código:</label>
+                                                                <input type="text" class="form-control" ng-model="AutorResena.Id" ng-readonly="true">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-24 col-sm-10 col-md-4 col-lg-10">
+                                                            <div class="form-group">
+                                                                <label>Grado académico:</label>
+                                                                <select class="form-control" ng-model="AutorResena.IdGradoAcademico" ng-options="GradoAcademico.Id as GradoAcademico.Titulo for GradoAcademico in GradosAcademicos ">
+                                                                    <option value="">[Seleccione]</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-24 col-sm-10 col-md-10 col-lg-10">
+                                                            <div class="form-group">
+                                                                <label>Cargo:</label>
+                                                                <input type="text" class="form-control" ng-model="AutorResena.Cargo">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-24 col-sm-12 col-md-12 col-lg-12">
+                                                            <div class="form-group">
+                                                                <label>Nombre:</label>
+                                                                <input type="text" class="form-control" ng-model="AutorResena.Nombre">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-24 col-sm-12 col-md-12 col-lg-12">
+                                                            <div class="form-group">
+                                                                <label>Apellidos:</label>
+                                                                <input type="text" class="form-control" ng-model="AutorResena.Apellido">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                                                            <div class="form-group">
+                                                                <label>Imágen:</label>
+                                                                <input type="text" class="form-control" ng-model="AutorResena.Recurso">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer text-right">
+                                                    <button type="button" class="btn btn-default" ng-click="CerrarAutorResena()">Cerrar</button>
+                                                    <button type="button" class="btn btn-success" ng-click="GuardarAutorResena()"><span ng-bind="TextoBotonGuardar()"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script src="~/Angular/Factories/TipoPublicacionFactory.js"></script>
+    <script src="~/Angular/Factories/TipoDetallePublicacionFactory.js"></script>
+    <script src="~/Angular/Factories/TipoResenaFactory.js"></script>
+    <script src="~/Angular/Controllers/TipoColeccionController.js"></script>
+    <script src="~/Angular/Factories/GradoAcademicoFactory.js"></script>
+    <script src="~/Angular/Factories/AutorResenaFactory.js"></script>
+    <script src="~/Angular/Controllers/CaracteristicaController.js"></script>
+}

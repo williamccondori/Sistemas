@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Asistente virtual";
+}
+
+<section>
+    <ol class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Portada")">Inicio</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Modulos", "Portada")">Módulos</a>
+        </li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+<section>
+    <div class="row">
+        <div class="col-xs-24 col-sm-6 col-md-6 col-lg-6">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="@Url.Action("Index","Asistente")">Inicio</a></li>
+                <li><a href="#">Menu 2</a></li>
+                <li><a href="@Url.Action("Previsualizar","Asistente")">Previsualización</a></li>
+            </ul>
+        </div>
+    </div>
+</section>

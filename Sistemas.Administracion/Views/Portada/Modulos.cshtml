@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Módulos";
+}
+
+<section>
+    <ol class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Portada")">Inicio</a>
+        </li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+<section>
+    <div class="row">
+        <div class="col-xs-24 col-sm-8 col-md-8 col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Sitio web
+                </div>
+                <div class="list-group">
+                    <a href="@Url.Action("Index", "Sitio")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Sitio web</h4>
+                        <p class="list-group-item-text">No implementado.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-24 col-sm-8 col-md-8 col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Asistente virtual
+                </div>
+                <div class="list-group">
+                    <a href="@Url.Action("Index", "Asistente")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Asistente virtual</h4>
+                        <p class="list-group-item-text">BOT conversacional para Facebook Messenger.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Configuración";
+}
+
+<section>
+    <ol class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Portada")">Inicio</a>
+        </li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+<section>
+    <div class="row">
+        <div class="col-xs-24 col-sm-8 col-md-8 col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Seguridad
+                </div>
+                <div class="list-group">
+                    <a href="@Url.Action("Index", "Usuario")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Usuarios</h4>
+                        <p class="list-group-item-text">Configuración de los usuarios y accesos del sistema.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

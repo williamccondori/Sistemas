@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Usuarios";
+}
+<section>
+    <ol class="breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Portada")">Inicio</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Configuracion", "Portada")">Configuración</a>
+        </li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+<section ng-controller="UsuarioController" ng-init="Iniciar()">
+
+    <div class="row">
+        <div class="col-xs-24 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default epis--panel-indice">
+                <div class="panel-heading">
+                    Usuarios
+                </div>
+                <div class="list-group">
+                    <a href="@Url.Action("Index", "Usuario")" class="list-group-item active">
+                        <h4 class="list-group-item-heading">Inicio</h4>
+                        <p class="list-group-item-text">Gestión de usuarios.</p>
+                    </a>
+                    <a href="@Url.Action("Seguridad", "Usuario")" class="list-group-item">
+                        <h4 class="list-group-item-heading">Seguridad</h4>
+                        <p class="list-group-item-text">Gestión de los accesos del usuario.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-24 col-sm-18 col-md-18 col-lg-18">
+            <div class="panel panel-default epis--panel-tabla">
+                <div class="panel-heading">
+                    Usuarios <span class="badge" ng-bind="Usuarios.length"></span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th class="col-xs-2">Código</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Username</th>
+                                <th class="col-xs-2 text-center">
+                                    <button type="button" class="btn btn-success btn-xs" ng-click="CrearUsuario()">Crear</button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="usuario in Usuarios">
+                                <td><span class="text-id" ng-bind="usuario.Id"></span></td>
+                                <td><span ng-bind="usuario.Nombre"></span></td>
+                                <td><span ng-bind="usuario.Apellido"></span></td>
+                                <td><span class="text-uppercase" ng-bind="usuario.Username"></span></td>
+                                <td class="col-xs-2 text-center">
+                                    <button type="button" class="btn btn-warning btn-xs" ng-click="ModificarUsuario(usuario)">Modificar</button>
+                                    <button type="button" class="btn btn-danger btn-xs" ng-click="EliminarUsuario(usuario)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalUsuario">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Ingrese la información de los usuarios
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label>Código:</label>
+                                        <input type="text" class="form-control" ng-model="Usuario.Id" ng-readonly="true">
+                                    </div>
+                                </div>
+                                <div class="col-xs-24 col-sm-10 col-md-10 col-lg-10">
+                                    <div class="form-group">
+                                        <label>Nombre:</label>
+                                        <input type="text" class="form-control" ng-model="Usuario.Nombre">
+                                    </div>
+                                </div>
+                                <div class="col-xs-24 col-sm-10 col-md-10 col-lg-10">
+                                    <div class="form-group">
+                                        <label>Apellidos:</label>
+                                        <input type="text" class="form-control" ng-model="Usuario.Apellido">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label>Usuario:</label>
+                                        <input type="text" class="form-control" ng-model="Usuario.Username">
+                                    </div>
+                                </div>
+                                <div class="col-xs-24 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label>Correo electrónico:</label>
+                                        <input type="email" class="form-control" ng-model="Usuario.Email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label>Contraseña:</label>
+                                        <input type="password" class="form-control" ng-model="Usuario.Password">
+                                    </div>
+                                </div>
+                                <div class="col-xs-24 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label>Repita la contraseña:</label>
+                                        <input type="password" class="form-control" ng-model="Usuario.PasswordSeguridad">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                                    <div class="form-group">
+                                        <label>Imágen:</label>
+                                        <input type="text" class="form-control" ng-model="Usuario.Imagen">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label>¿Está habilitado?:</label><br />
+                                        <input type="checkbox" ng-model="Usuario.Habilitado" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer text-right">
+                            <button type="button" class="btn btn-default" ng-click="CerrarUsuario()">Cerrar</button>
+                            <button type="button" class="btn btn-success" ng-click="GuardarUsuario()"><span ng-bind="TextoBotonGuardar()"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section scripts{
+    <script src="~/Angular/Factories/UsuarioFactory.js"></script>
+    <script src="~/Angular/Controllers/UsuarioController.js"></script>
+}
