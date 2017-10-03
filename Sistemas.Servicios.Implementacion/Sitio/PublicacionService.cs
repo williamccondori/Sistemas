@@ -29,6 +29,8 @@ namespace Sistemas.Servicios.Implementacion.Sitio
                     , p.Resumen, p.Recurso, publicacionDto.Usuario)).ToList()
                     , publicacionDto.Usuario);
 
+                publicacion.ValidarObligatorios();
+
                 _publicacionRepository.Crear(publicacion);
             }
             else if (publicacionDto.Estado == EstadoObjeto.Modificado)
@@ -49,26 +51,42 @@ namespace Sistemas.Servicios.Implementacion.Sitio
         {
             ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerPorTipo(idTipoPublicacion);
 
-            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => new PublicacionDto
+            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).ToList();
+
+            return publicacionesDto;
+        }
+
+        public IList<PublicacionDto> ObtenerTodo()
+        {
+            ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerTodo();
+
+            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).ToList();
+
+            return publicacionesDto;
+        }
+
+        public PublicacionDto MapearPublicacion(PublicacionEntity publicacion)
+        {
+            PublicacionDto publicacionDto = new PublicacionDto
             {
                 Estado = EstadoObjeto.SinCambios,
-                Fecha = p.FechaModifico ?? p.FechaRegistro,
-                Usuario = p.UsuarioModifico ?? p.UsuarioRegistro,
+                Fecha = publicacion.FechaModifico ?? publicacion.FechaRegistro,
+                Usuario = publicacion.UsuarioModifico ?? publicacion.UsuarioRegistro,
 
-                Id = p.IdPublicacion,
-                Emision = p.FechaPublicacion,
-                IdTipoPublicacion = p.IdTipoPublicacion,
-                Recurso = p.DescripcionRecurso,
-                Resena = p.DescripcionResena,
-                Resumen = p.DescripcionResumen,
-                Subtitulo = p.DescripcionSubtitulo,
-                Titulo = p.DescripcionTitulo,
+                Id = publicacion.IdPublicacion,
+                Emision = publicacion.FechaPublicacion,
+                IdTipoPublicacion = publicacion.IdTipoPublicacion,
+                Recurso = publicacion.DescripcionRecurso,
+                Resena = publicacion.DescripcionResena,
+                Resumen = publicacion.DescripcionResumen,
+                Subtitulo = publicacion.DescripcionSubtitulo,
+                Titulo = publicacion.DescripcionTitulo,
                 TipoPublicacion = new TipoPublicacionDto
                 {
-                    Id = p.TipoPublicacionX.IdTipoPublicacion,
-                    Descripcion = p.TipoPublicacionX.DescripcionTipoPublicacion
+                    Id = publicacion.TipoPublicacionX.IdTipoPublicacion,
+                    Descripcion = publicacion.TipoPublicacionX.DescripcionTipoPublicacion
                 },
-                Detalles = p.DetallePublicacionS.Select(g => new DetallePublicacionDto
+                Detalles = publicacion.DetallePublicacionS.Select(g => new DetallePublicacionDto
                 {
                     Estado = EstadoObjeto.SinCambios,
                     Fecha = g.FechaModifico ?? g.FechaRegistro,
@@ -86,9 +104,9 @@ namespace Sistemas.Servicios.Implementacion.Sitio
                         Descripcion = g.TipoDetallePublicacionX.DescripcionTipoDetallePublicacion
                     }
                 }).ToList()
-            }).ToList();
+            };
 
-            return publicacionesDto;
+            return publicacionDto;
         }
     }
 }

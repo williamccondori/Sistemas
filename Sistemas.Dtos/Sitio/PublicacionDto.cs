@@ -13,8 +13,15 @@ namespace Sistemas.Dtos.Sitio
         public string Resumen { get; set; }
         public string Resena { get; set; }
         public string Recurso { get; set; }
+        public string Url { get; set; }
         public DateTime Emision { get; set; }
         public TipoPublicacionDto TipoPublicacion { get; set; }
         public List<DetallePublicacionDto> Detalles { get; set; }
+
+        public PublicacionDto()
+        {
+            TipoPublicacion = new TipoPublicacionDto();
+            Detalles = new List<DetallePublicacionDto>();
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace Sistemas.Datos.Configuraciones
             Property(m => m.DescripcionResumen).HasColumnName("DES_RESUMEN").HasMaxLength(500);
             Property(m => m.DescripcionResena).HasColumnName("DES_RESENA").HasMaxLength(8000);
             Property(m => m.DescripcionRecurso).HasColumnName("DES_RECURSO").HasMaxLength(300);
+            Property(m => m.DescripcionUrl).HasColumnName("DES_URL").HasMaxLength(300);
             Property(m => m.FechaPublicacion).HasColumnName("FEC_PUBLICACION");
             HasRequired(p => p.TipoPublicacionX).WithMany().HasForeignKey(p => p.IdTipoPublicacion);
             HasMany(p => p.DetallePublicacionS).WithRequired().HasForeignKey(p => p.IdPublicacion);

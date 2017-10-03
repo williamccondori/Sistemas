@@ -153,6 +153,17 @@ namespace Sistemas.Administracion.Controllers
         }
 
         [HttpPost]
+        public JsonResult ObtenerPublicaciones()
+        {
+            return Json(Ejecutar(() =>
+            {
+                _publicacionService = new PublicacionService();
+                IList<PublicacionDto> publicacionesDto = _publicacionService.ObtenerTodo();
+                return Response<IList<PublicacionDto>>.Correcto(publicacionesDto);
+            }), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public JsonResult ObtenerPublicacionesPorTipo(string idTipoPublicacion)
         {
             return Json(Ejecutar(() =>

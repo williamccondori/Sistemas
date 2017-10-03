@@ -13,6 +13,7 @@ namespace Sistemas.Entidades
         public string DescripcionResumen { get; set; }
         public string DescripcionResena { get; set; }
         public string DescripcionRecurso { get; set; }
+        public string DescripcionUrl { get; set; }
         public DateTime FechaPublicacion { get; set; }
         public TipoPublicacionEntity TipoPublicacionX { get; set; }
         public ICollection<DetallePublicacionEntity> DetallePublicacionS { get; set; }
@@ -28,13 +29,18 @@ namespace Sistemas.Entidades
                 DescripcionSubtitulo = descripcionSubtitulo,
                 DescripcionTitulo = descripcionTitulo,
                 IdTipoPublicacion = idTipoPublicacion,
-                FechaRegistro = DateTime.Now,
-                DetallePublicacionS = detallePublicacionS
+                DetallePublicacionS = detallePublicacionS,
+                FechaPublicacion = DateTime.Now
             };
 
             publicacion.Nuevo(usuario);
 
             return publicacion;
+        }
+
+        public void ValidarObligatorios()
+        {
+            if (string.IsNullOrEmpty(DescripcionTitulo)) throw new Exception("El campo 'título' es obligatorio");
         }
     }
 }

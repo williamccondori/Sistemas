@@ -7,5 +7,6 @@ namespace Sistemas.Repositorios
     {
         void Crear(PublicacionEntity publicacion);
         ICollection<PublicacionEntity> ObtenerPorTipo(string idTipoPublicacion);
+        ICollection<PublicacionEntity> ObtenerTodo();
     }
 }

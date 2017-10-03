@@ -1,15 +1,20 @@
 ﻿(function (module) {
 
     PublicacionController.$inject = [
-        '$scope'
+        '$scope',
+        'PublicacionFactory',
+        'TipoPublicacionFactory'
     ];
 
-    function PublicacionController($scope) {
+    function PublicacionController($scope, PublicacionFactory, TipoPublicacionFactory) {
 
+        $scope.TiposPublicacion = [];
         $scope.Publicaciones = [];
 
         $scope.Iniciar = function () {
             $scope.IniciarPublicacion();
+            $scope.ObtenerTiposPublicacion();
+            $scope.ObtenerPublicaciones();
         };
 
         $scope.TextoBotonGuardar = function () {
@@ -44,7 +49,7 @@
             $scope.Formulario = EstadoFormulario.Eliminar;
             $scope.IniciarPublicacion(publicacion);
             $scope.Publicacion.Estado = EstadoObjeto.Borrado;
-            //$scope.GuardarResena();
+            $scope.GuardarPublicacion();
         };
 
         $scope.CerrarPublicacion = function () {
@@ -53,7 +58,33 @@
 
         $scope.GuardarPublicacion = function () {
             Bootstrap.CerrarModal("#ModalPublicacion");
-            $scope.Publicaciones.push($scope.Publicacion);
+            PublicacionFactory.GuardarPublicacion($scope.Publicacion).then(function (response) {
+                if (response.Estado) {
+                    $scope.ObtenerPublicaciones();
+                } else {
+                    console.log(response.Mensaje);
+                }
+            });
+        };
+
+        $scope.ObtenerTiposPublicacion = function () {
+            TipoPublicacionFactory.ObtenerTiposPublicacion().then(function (response) {
+                if (response.Estado) {
+                    $scope.TiposPublicacion = response.Datos;
+                } else {
+                    console.log(response.Mensaje);
+                }
+            });
+        };
+
+        $scope.ObtenerPublicaciones = function () {
+            PublicacionFactory.ObtenerPublicaciones().then(function (response) {
+                if (response.Estado) {
+                    $scope.Publicaciones = response.Datos;
+                } else {
+                    console.log(response.Mensaje);
+                }
+            });
         };
     }
     module.controller('PublicacionController', PublicacionController);
