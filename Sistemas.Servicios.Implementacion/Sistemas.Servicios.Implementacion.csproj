@@ -45,6 +45,7 @@
     <Compile Include="Sitio\AutorResenaService.cs" />
     <Compile Include="Sitio\GradoAcademicoService.cs" />
     <Compile Include="Sitio\PublicacionService.cs" />
+    <Compile Include="Sitio\ResenaService.cs" />
     <Compile Include="Sitio\TipoDetallePublicacionService.cs" />
     <Compile Include="Sitio\TipoPublicacionService.cs" />
     <Compile Include="Sitio\TipoResenaService.cs" />

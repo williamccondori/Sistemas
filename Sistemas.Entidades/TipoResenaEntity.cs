@@ -19,5 +19,11 @@ namespace Sistemas.Entidades
 
             return tipoResena;
         }
+
+        public void Modificar(string descripcion, string usuario)
+        {
+            DescripcionTipoResena = descripcion;
+            Modificado(usuario);
+        }
     }
 }

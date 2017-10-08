@@ -6,6 +6,7 @@ using Sistemas.Entidades.Shared;
 using Sistemas.Repositorios;
 using Sistemas.Utilidades.Constantes;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Sistemas.Datos.Repositorios
@@ -17,6 +18,16 @@ namespace Sistemas.Datos.Repositorios
         public UsuarioRepository()
         {
             _sistemasContext = new SistemasContext();
+        }
+
+        public UsuarioEntity Buscar(object idEntidad)
+        {
+            return Consultar(() =>
+            {
+                UsuarioEntity usuario = _sistemasContext.Usuarios.Find(idEntidad);
+
+                return usuario;
+            });
         }
 
         public void Crear(UsuarioEntity entidad)
@@ -33,7 +44,8 @@ namespace Sistemas.Datos.Repositorios
         {
             Eliminar(() =>
             {
-                UsuarioEntity usuario = _sistemasContext.Usuarios.Find(idEntidad);
+                UsuarioEntity usuario = Buscar(idEntidad);
+                usuario.Borrado();
                 _sistemasContext.Usuarios.Remove(usuario);
                 _sistemasContext.GuardarCambios();
             });
@@ -126,6 +138,8 @@ namespace Sistemas.Datos.Repositorios
         {
             return Consultar(() =>
             {
+                username = username.ToUpper(CultureInfo.CurrentCulture);
+
                 bool passwordCorrecto = _sistemasContext.Usuarios.Any(p => p.IndicadorEstado == EstadoEntidad.Activo
                     && p.DescripcionUsuario == username && p.DescripcionPassword == password);
 

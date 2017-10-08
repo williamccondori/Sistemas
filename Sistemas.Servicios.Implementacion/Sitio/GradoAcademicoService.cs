@@ -30,11 +30,13 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             }
             else if (gradoAcademicoDto.Estado == EstadoObjeto.Modificado)
             {
-
+                GradoAcademicoEntity gradoAcademico = _gradoAcademicoRepository.Buscar(gradoAcademicoDto.Id);
+                gradoAcademico.Modificar(gradoAcademicoDto.Titulo, gradoAcademicoDto.Abreviatura, gradoAcademicoDto.Usuario);
+                _gradoAcademicoRepository.Modificar();
             }
             else if (gradoAcademicoDto.Estado == EstadoObjeto.Borrado)
             {
-
+                _gradoAcademicoRepository.Eliminar(gradoAcademicoDto.Id);
             }
             else
             {

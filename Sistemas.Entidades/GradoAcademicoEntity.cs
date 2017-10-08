@@ -20,5 +20,12 @@ namespace Sistemas.Entidades
 
             return gradoAcademico;
         }
+
+        public void Modificar(string titulo, string abreviatura, string usuario)
+        {
+            DescripcionTitulo = titulo;
+            DescripcionAbreviatura = abreviatura;
+            Modificado(usuario);
+        }
     }
 }

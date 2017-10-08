@@ -28,5 +28,15 @@ namespace Sistemas.Entidades
 
             return autorResena;
         }
+
+        public void Modificar(int idGradoAcademico, string nombre, string apellido, string cargo, string recurso, string usuario)
+        {
+            IdGradoAcademico = idGradoAcademico;
+            DescripcionNombre = nombre;
+            DescripcionApellido = apellido;
+            DescripcionCargo = cargo;
+            DescripcionRecurso = recurso;
+            Modificado(usuario);
+        }
     }
 }

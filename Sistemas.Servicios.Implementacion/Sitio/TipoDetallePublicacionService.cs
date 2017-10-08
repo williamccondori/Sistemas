@@ -30,11 +30,13 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             }
             else if (tipoDetallePublicacionDto.Estado == EstadoObjeto.Modificado)
             {
-
+                TipoDetallePublicacionEntity tipoDetallePublicacion = _tipoDetallePublicacionRepository.Buscar(tipoDetallePublicacionDto.Id);
+                tipoDetallePublicacion.Modificar(tipoDetallePublicacionDto.Descripcion, tipoDetallePublicacionDto.Usuario);
+                _tipoDetallePublicacionRepository.Modificar();
             }
             else if (tipoDetallePublicacionDto.Estado == EstadoObjeto.Borrado)
             {
-
+                _tipoDetallePublicacionRepository.Eliminar(tipoDetallePublicacionDto.Id);
             }
             else
             {

@@ -17,6 +17,16 @@ namespace Sistemas.Datos.Repositorios
             _sistemasContext = new SistemasContext();
         }
 
+        public GradoAcademicoEntity Buscar(object idEntidad)
+        {
+            return Consultar(() =>
+            {
+                GradoAcademicoEntity gradoAcademico = _sistemasContext.GradosAcademicos.Find(idEntidad);
+
+                return gradoAcademico;
+            });
+        }
+
         public void Crear(GradoAcademicoEntity entidad)
         {
             Guardar(() =>
@@ -31,7 +41,8 @@ namespace Sistemas.Datos.Repositorios
         {
             Eliminar(() =>
             {
-                GradoAcademicoEntity gradoAcademico = _sistemasContext.GradosAcademicos.Find(idEntidad);
+                GradoAcademicoEntity gradoAcademico = Buscar(idEntidad);
+                gradoAcademico.Borrado();
                 _sistemasContext.GradosAcademicos.Remove(gradoAcademico);
                 _sistemasContext.GuardarCambios();
             });

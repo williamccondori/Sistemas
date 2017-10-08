@@ -18,6 +18,16 @@ namespace Sistemas.Datos.Repositorios
             _sistemasContext = new SistemasContext();
         }
 
+        public AutorResenaEntity Buscar(object idEntidad)
+        {
+            return Consultar(() =>
+            {
+                AutorResenaEntity autorResena = _sistemasContext.AutoresResena.Find(idEntidad);
+
+                return autorResena;
+            });
+        }
+
         public void Crear(AutorResenaEntity entidad)
         {
             Guardar(() =>
@@ -32,7 +42,8 @@ namespace Sistemas.Datos.Repositorios
         {
             Eliminar(() =>
             {
-                AutorResenaEntity autorResena = _sistemasContext.AutoresResena.Find(idEntidad);
+                AutorResenaEntity autorResena = Buscar(idEntidad);
+                autorResena.Borrado();
                 _sistemasContext.AutoresResena.Remove(autorResena);
                 _sistemasContext.GuardarCambios();
             });

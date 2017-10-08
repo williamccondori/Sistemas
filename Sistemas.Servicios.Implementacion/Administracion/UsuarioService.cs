@@ -8,6 +8,7 @@ using Sistemas.Utilidades.Constantes;
 using Sistemas.Utilidades.Seguridad;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Sistemas.Servicios.Implementacion.Administracion
@@ -29,6 +30,8 @@ namespace Sistemas.Servicios.Implementacion.Administracion
             {
                 string password = _encriptacion.Encriptar(usuarioDto.Password);
 
+                usuarioDto.Username = usuarioDto.Username.ToUpper(CultureInfo.CurrentCulture);
+
                 UsuarioEntity usuario = UsuarioEntity.Crear(usuarioDto.Username, password, usuarioDto.Nombre, usuarioDto.Apellido,
                     usuarioDto.Email, usuarioDto.Imagen, usuarioDto.Usuario);
 
@@ -36,11 +39,25 @@ namespace Sistemas.Servicios.Implementacion.Administracion
             }
             else if (usuarioDto.Estado == EstadoObjeto.Modificado)
             {
+                string password = _encriptacion.Encriptar(usuarioDto.Password);
 
+                bool passwordCorrecto = _usuarioRepository.VerificarPassword(usuarioDto.Username, password);
+
+                if (!passwordCorrecto)
+                {
+                    throw new Exception("No se puede modificar el usuario, la contraseña es incorrecta");
+                }
+
+                usuarioDto.Username = usuarioDto.Username.ToUpper(CultureInfo.CurrentCulture);
+
+                UsuarioEntity usuario = _usuarioRepository.Buscar(usuarioDto.Id);
+                usuario.Modificar(usuarioDto.Username, usuarioDto.Nombre, usuarioDto.Apellido, usuarioDto.Email
+                    , usuarioDto.Imagen, usuarioDto.Usuario);
+                _usuarioRepository.Modificar();
             }
             else if (usuarioDto.Estado == EstadoObjeto.Borrado)
             {
-
+                _usuarioRepository.Eliminar(usuarioDto.Id);
             }
             else
             {

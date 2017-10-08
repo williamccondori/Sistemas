@@ -30,11 +30,14 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             }
             else if (autorResenaDto.Estado == EstadoObjeto.Modificado)
             {
-
+                AutorResenaEntity autorResena = _autorResenaRepository.Buscar(autorResenaDto.Id);
+                autorResena.Modificar(autorResenaDto.IdGradoAcademico, autorResenaDto.Nombre
+                    , autorResenaDto.Apellido, autorResenaDto.Cargo, autorResenaDto.Recurso, autorResenaDto.Usuario);
+                _autorResenaRepository.Modificar();
             }
             else if (autorResenaDto.Estado == EstadoObjeto.Borrado)
             {
-
+                _autorResenaRepository.Eliminar(autorResenaDto.Id);
             }
             else
             {

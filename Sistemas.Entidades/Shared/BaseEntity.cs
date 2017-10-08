@@ -13,12 +13,24 @@ namespace Sistemas.Entidades.Shared
         public DateTime? FechaModifico { get; set; }
         public EstadoObjeto EstadoObjeto { get; set; }
 
-        public void Nuevo(string usuario)
+        protected void Nuevo(string usuario)
         {
             IndicadorEstado = EstadoEntidad.Activo;
             UsuarioRegistro = usuario;
             FechaRegistro = DateTime.Now;
             EstadoObjeto = EstadoObjeto.Nuevo;
+        }
+
+        protected void Modificado(string usuario)
+        {
+            UsuarioRegistro = usuario;
+            FechaModifico = DateTime.Now;
+            EstadoObjeto = EstadoObjeto.Modificado;
+        }
+
+        public void Borrado()
+        {
+            EstadoObjeto = EstadoObjeto.Borrado;
         }
     }
 

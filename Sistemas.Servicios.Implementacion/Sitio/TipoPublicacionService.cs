@@ -25,16 +25,17 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             {
                 TipoPublicacionEntity tipoPublicacion = TipoPublicacionEntity.Crear(tipoPublicacionDto.Id
                     , tipoPublicacionDto.Descripcion, tipoPublicacionDto.Usuario);
-
                 _tipoPublicacionRepository.Crear(tipoPublicacion);
             }
             else if (tipoPublicacionDto.Estado == EstadoObjeto.Modificado)
             {
-
+                TipoPublicacionEntity tipoPublicacion = _tipoPublicacionRepository.Buscar(tipoPublicacionDto.Id);
+                tipoPublicacion.Modificar(tipoPublicacionDto.Descripcion, tipoPublicacionDto.Usuario);
+                _tipoPublicacionRepository.Modificar();
             }
             else if (tipoPublicacionDto.Estado == EstadoObjeto.Borrado)
             {
-
+                _tipoPublicacionRepository.Eliminar(tipoPublicacionDto.Id);
             }
             else
             {
@@ -51,7 +52,6 @@ namespace Sistemas.Servicios.Implementacion.Sitio
                 Estado = EstadoObjeto.SinCambios,
                 Fecha = p.FechaModifico ?? p.FechaRegistro,
                 Usuario = p.UsuarioModifico ?? p.UsuarioRegistro,
-
                 Descripcion = p.DescripcionTipoPublicacion,
                 Id = p.IdTipoPublicacion
             }).ToList();

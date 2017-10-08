@@ -14,23 +14,33 @@ namespace Sistemas.Entidades
         public string DescripcionRecurso { get; set; }
         public string IndicadorHabilitado { get; set; }
 
-        public static UsuarioEntity Crear(string descripcionUsuario, string descripcionPassword, string descripcionNombre
-            , string descripcionApellido, string descripcionEmail, string descripcionRecurso, string usuario)
+        public static UsuarioEntity Crear(string username, string password, string nombre
+            , string apellido, string email, string imagen, string usuario)
         {
             UsuarioEntity usuario_ = new UsuarioEntity
             {
-                DescripcionUsuario = descripcionUsuario,
-                DescripcionPassword = descripcionPassword,
-                DescripcionNombre = descripcionNombre,
-                DescripcionApellido = descripcionApellido,
-                DescripcionEmail = descripcionEmail,
-                DescripcionRecurso = descripcionRecurso,
+                DescripcionUsuario = username,
+                DescripcionPassword = password,
+                DescripcionNombre = nombre,
+                DescripcionApellido = apellido,
+                DescripcionEmail = email,
+                DescripcionRecurso = imagen,
                 IndicadorHabilitado = EstadoEntidad.Si
             };
 
             usuario_.Nuevo(usuario);
 
             return usuario_;
+        }
+
+        public void Modificar(string username, string nombre, string apellido, string email, string imagen, string usuario)
+        {
+            DescripcionUsuario = username;
+            DescripcionNombre = nombre;
+            DescripcionApellido = apellido;
+            DescripcionEmail = email;
+            DescripcionRecurso = imagen;
+            Modificado(usuario);
         }
     }
 }

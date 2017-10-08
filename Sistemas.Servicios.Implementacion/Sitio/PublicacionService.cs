@@ -39,7 +39,7 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             }
             else if (publicacionDto.Estado == EstadoObjeto.Borrado)
             {
-
+                _publicacionRepository.Eliminar(publicacionDto.Id);
             }
             else
             {

@@ -19,5 +19,11 @@ namespace Sistemas.Entidades
 
             return tipoPublicacion;
         }
+
+        public void Modificar(string descripcion, string usuario)
+        {
+            DescripcionTipoPublicacion = descripcion;
+            Modificado(usuario);
+        }
     }
 }

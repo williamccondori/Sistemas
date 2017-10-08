@@ -18,6 +18,16 @@ namespace Sistemas.Datos.Repositorios
             _sistemasContext = new SistemasContext();
         }
 
+        public PublicacionEntity Buscar(object idEntidad)
+        {
+            return Consultar(() =>
+            {
+                PublicacionEntity publicacion = _sistemasContext.Publicaciones.Find(idEntidad);
+
+                return publicacion;
+            });
+        }
+
         public void Crear(PublicacionEntity entidad)
         {
             Guardar(() =>
@@ -32,7 +42,8 @@ namespace Sistemas.Datos.Repositorios
         {
             Eliminar(() =>
             {
-                PublicacionEntity publicacion = _sistemasContext.Publicaciones.Find(idEntidad);
+                PublicacionEntity publicacion = Buscar(idEntidad);
+                publicacion.Borrado();
                 _sistemasContext.Publicaciones.Remove(publicacion);
                 _sistemasContext.GuardarCambios();
             });

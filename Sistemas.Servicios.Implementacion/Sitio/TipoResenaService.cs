@@ -30,11 +30,13 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             }
             else if (tipoResenaDto.Estado == EstadoObjeto.Modificado)
             {
-
+                TipoResenaEntity tipoResena = _tipoResenaRepository.Buscar(tipoResenaDto.Id);
+                tipoResena.Modificar(tipoResenaDto.Descripcion, tipoResenaDto.Usuario);
+                _tipoResenaRepository.Modificar();
             }
             else if (tipoResenaDto.Estado == EstadoObjeto.Borrado)
             {
-
+                _tipoResenaRepository.Eliminar(tipoResenaDto.Id);
             }
             else
             {
