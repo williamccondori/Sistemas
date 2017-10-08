@@ -19,7 +19,7 @@ namespace Sistemas.Datos.Repositorios
 
         public void Crear(TipoResenaEntity tipoResena)
         {
-            Ejecutar(() =>
+            Guardar(() =>
             {
                 _sistemasContext.TiposResena.Add(tipoResena);
 
@@ -27,12 +27,30 @@ namespace Sistemas.Datos.Repositorios
             });
         }
 
+        public void Eliminar(object idEntidad)
+        {
+            Eliminar(() =>
+            {
+                TipoResenaEntity tipoResena = _sistemasContext.TiposResena.Find(idEntidad);
+                _sistemasContext.TiposResena.Remove(tipoResena);
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
+        public void Modificar()
+        {
+            Guardar(() =>
+            {
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
         public ICollection<TipoResenaEntity> ObtenerTodo()
         {
-            return Ejecutar(() =>
+            return Consultar(() =>
             {
-                ICollection<TipoResenaEntity> tiposResena = _sistemasContext.TiposResena.Where(p =>
-                    p.IndicadorEstado == EstadoEntidad.Activo).ToList();
+                ICollection<TipoResenaEntity> tiposResena = _sistemasContext.TiposResena
+                .Where(p => p.IndicadorEstado == EstadoEntidad.Activo).ToList();
 
                 return tiposResena;
             });

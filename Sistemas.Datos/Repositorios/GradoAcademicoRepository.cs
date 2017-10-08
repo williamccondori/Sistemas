@@ -17,22 +17,40 @@ namespace Sistemas.Datos.Repositorios
             _sistemasContext = new SistemasContext();
         }
 
-        public void Crear(GradoAcademicoEntity gradoAcademico)
+        public void Crear(GradoAcademicoEntity entidad)
         {
-            Ejecutar(() =>
+            Guardar(() =>
             {
-                _sistemasContext.GradosAcademicos.Add(gradoAcademico);
+                _sistemasContext.GradosAcademicos.Add(entidad);
 
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
+        public void Eliminar(object idEntidad)
+        {
+            Eliminar(() =>
+            {
+                GradoAcademicoEntity gradoAcademico = _sistemasContext.GradosAcademicos.Find(idEntidad);
+                _sistemasContext.GradosAcademicos.Remove(gradoAcademico);
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
+        public void Modificar()
+        {
+            Guardar(() =>
+            {
                 _sistemasContext.GuardarCambios();
             });
         }
 
         public ICollection<GradoAcademicoEntity> ObtenerTodo()
         {
-            return Ejecutar(() =>
+            return Consultar(() =>
             {
-                ICollection<GradoAcademicoEntity> gradosAcademicos = _sistemasContext.GradosAcademicos.Where(p =>
-                    p.IndicadorEstado == EstadoEntidad.Activo).ToList();
+                ICollection<GradoAcademicoEntity> gradosAcademicos = _sistemasContext.GradosAcademicos
+                .Where(p => p.IndicadorEstado == EstadoEntidad.Activo).ToList();
 
                 return gradosAcademicos;
             });

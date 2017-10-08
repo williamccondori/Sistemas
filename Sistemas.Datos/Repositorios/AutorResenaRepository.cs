@@ -18,19 +18,37 @@ namespace Sistemas.Datos.Repositorios
             _sistemasContext = new SistemasContext();
         }
 
-        public void Crear(AutorResenaEntity autorResena)
+        public void Crear(AutorResenaEntity entidad)
         {
-            Ejecutar(() =>
+            Guardar(() =>
             {
-                _sistemasContext.AutoresResena.Add(autorResena);
+                _sistemasContext.AutoresResena.Add(entidad);
 
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
+        public void Eliminar(object idEntidad)
+        {
+            Eliminar(() =>
+            {
+                AutorResenaEntity autorResena = _sistemasContext.AutoresResena.Find(idEntidad);
+                _sistemasContext.AutoresResena.Remove(autorResena);
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
+        public void Modificar()
+        {
+            Guardar(() =>
+            {
                 _sistemasContext.GuardarCambios();
             });
         }
 
         public ICollection<AutorResenaEntity> ObtenerTodo()
         {
-            return Ejecutar(() =>
+            return Consultar(() =>
             {
                 ICollection<AutorResenaEntity> autoresResena = _sistemasContext.AutoresResena
                 .Include(p => p.GradoAcademicoX)

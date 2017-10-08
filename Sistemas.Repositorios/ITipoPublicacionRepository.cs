@@ -1,11 +1,9 @@
 ﻿using Sistemas.Entidades;
-using System.Collections.Generic;
+using Sistemas.Repositorios.Base;
 
 namespace Sistemas.Repositorios
 {
-    public interface ITipoPublicacionRepository
+    public interface ITipoPublicacionRepository : IBaseRepository<TipoPublicacionEntity>
     {
-        void Crear(TipoPublicacionEntity tipoPublicacion);
-        ICollection<TipoPublicacionEntity> ObtenerTodo();
     }
 }

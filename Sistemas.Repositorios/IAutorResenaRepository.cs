@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Sistemas.Entidades;
+﻿using Sistemas.Entidades;
+using Sistemas.Repositorios.Base;
 
 namespace Sistemas.Repositorios
 {
-    public interface IAutorResenaRepository
+    public interface IAutorResenaRepository : IBaseRepository<AutorResenaEntity>
     {
-        void Crear(AutorResenaEntity autorResena);
-        ICollection<AutorResenaEntity> ObtenerTodo();
     }
 }

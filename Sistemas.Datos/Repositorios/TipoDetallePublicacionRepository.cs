@@ -17,22 +17,40 @@ namespace Sistemas.Datos.Repositorios
             _sistemasContext = new SistemasContext();
         }
 
-        public void Crear(TipoDetallePublicacionEntity tipoDetallePublicacion)
+        public void Crear(TipoDetallePublicacionEntity entidad)
         {
-            Ejecutar(() =>
+            Guardar(() =>
             {
-                _sistemasContext.TiposDetallePublicacion.Add(tipoDetallePublicacion);
+                _sistemasContext.TiposDetallePublicacion.Add(entidad);
 
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
+        public void Eliminar(object idEntidad)
+        {
+            Eliminar(() =>
+            {
+                TipoDetallePublicacionEntity tipoDetallePublicacion = _sistemasContext.TiposDetallePublicacion.Find(idEntidad);
+                _sistemasContext.TiposDetallePublicacion.Remove(tipoDetallePublicacion);
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
+        public void Modificar()
+        {
+            Guardar(() =>
+            {
                 _sistemasContext.GuardarCambios();
             });
         }
 
         public ICollection<TipoDetallePublicacionEntity> ObtenerTodo()
         {
-            return Ejecutar(() =>
+            return Consultar(() =>
             {
-                ICollection<TipoDetallePublicacionEntity> tiposDetallePublicacion = _sistemasContext.TiposDetallePublicacion.Where(p =>
-                    p.IndicadorEstado == EstadoEntidad.Activo).ToList();
+                ICollection<TipoDetallePublicacionEntity> tiposDetallePublicacion = _sistemasContext.TiposDetallePublicacion
+                .Where(p => p.IndicadorEstado == EstadoEntidad.Activo).ToList();
 
                 return tiposDetallePublicacion;
             });

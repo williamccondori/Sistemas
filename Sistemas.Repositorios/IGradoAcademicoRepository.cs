@@ -1,11 +1,9 @@
 ﻿using Sistemas.Entidades;
-using System.Collections.Generic;
+using Sistemas.Repositorios.Base;
 
 namespace Sistemas.Repositorios
 {
-    public interface IGradoAcademicoRepository
+    public interface IGradoAcademicoRepository : IBaseRepository<GradoAcademicoEntity>
     {
-        void Crear(GradoAcademicoEntity gradoAcademico);
-        ICollection<GradoAcademicoEntity> ObtenerTodo();
     }
 }

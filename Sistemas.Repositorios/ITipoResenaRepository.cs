@@ -1,11 +1,9 @@
 ﻿using Sistemas.Entidades;
-using System.Collections.Generic;
+using Sistemas.Repositorios.Base;
 
 namespace Sistemas.Repositorios
 {
-    public interface ITipoResenaRepository
+    public interface ITipoResenaRepository : IBaseRepository<TipoResenaEntity>
     {
-        void Crear(TipoResenaEntity tipoResena);
-        ICollection<TipoResenaEntity> ObtenerTodo();
     }
 }

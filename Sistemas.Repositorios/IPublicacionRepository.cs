@@ -1,12 +1,11 @@
 ﻿using Sistemas.Entidades;
+using Sistemas.Repositorios.Base;
 using System.Collections.Generic;
 
 namespace Sistemas.Repositorios
 {
-    public interface IPublicacionRepository
+    public interface IPublicacionRepository : IBaseRepository<PublicacionEntity>
     {
-        void Crear(PublicacionEntity publicacion);
         ICollection<PublicacionEntity> ObtenerPorTipo(string idTipoPublicacion);
-        ICollection<PublicacionEntity> ObtenerTodo();
     }
 }

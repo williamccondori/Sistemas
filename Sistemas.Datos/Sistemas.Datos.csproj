@@ -65,6 +65,7 @@
     <Compile Include="Repositorios\AutorResenaRepository.cs" />
     <Compile Include="Repositorios\GradoAcademicoRepository.cs" />
     <Compile Include="Repositorios\PublicacionRepository.cs" />
+    <Compile Include="Repositorios\ResenaRepository.cs" />
     <Compile Include="Repositorios\TipoDetallePublicacionRepository.cs" />
     <Compile Include="Repositorios\TipoPublicacionRepository.cs" />
     <Compile Include="Repositorios\TipoResenaRepository.cs" />

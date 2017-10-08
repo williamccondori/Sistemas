@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Sistemas.Utilidades.Excepciones;
+using System;
 
 namespace Sistemas.Datos.Shared
 {
     public class BaseRepository
     {
-        protected void Ejecutar(Action accion)
+        protected void Guardar(Action accion)
         {
             try
             {
@@ -22,7 +23,7 @@ namespace Sistemas.Datos.Shared
             }
         }
 
-        protected T Ejecutar<T>(Func<T> funcion)
+        protected T Consultar<T>(Func<T> funcion)
         {
             try
             {
@@ -37,6 +38,18 @@ namespace Sistemas.Datos.Shared
                     throw new Exception(excepcion.InnerException.Message);
 
                 throw new Exception(excepcion.InnerException.InnerException.Message);
+            }
+        }
+
+        protected void Eliminar(Action accion)
+        {
+            try
+            {
+                accion();
+            }
+            catch (Exception)
+            {
+                throw new DeleteException();
             }
         }
     }

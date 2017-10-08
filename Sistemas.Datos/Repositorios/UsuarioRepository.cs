@@ -19,49 +19,37 @@ namespace Sistemas.Datos.Repositorios
             _sistemasContext = new SistemasContext();
         }
 
-        public void Crear(UsuarioEntity usuario)
+        public void Crear(UsuarioEntity entidad)
         {
-            Ejecutar(() =>
+            Guardar(() =>
             {
-                _sistemasContext.Usuarios.Add(usuario);
+                _sistemasContext.Usuarios.Add(entidad);
 
                 _sistemasContext.GuardarCambios();
             });
         }
 
-        public UsuarioEntity ObtenerUsuarioPorUsername(string username)
+        public void Eliminar(object idEntidad)
         {
-            return Ejecutar(() =>
+            Eliminar(() =>
             {
-                UsuarioSinPasswordDto usuarioSinPassword = (from us in _sistemasContext.Usuarios
-                                                            where
-                                                            us.IndicadorEstado == EstadoEntidad.Activo &&
-                                                            us.DescripcionUsuario == username
-                                                            select new UsuarioSinPasswordDto
-                                                            {
-                                                                IdUsuario = us.IdUsuario,
-                                                                DescripcionUsuario = us.DescripcionUsuario,
-                                                                IndicadorHabilitado = us.IndicadorHabilitado
-                                                            }).FirstOrDefault();
-                if (usuarioSinPassword == null)
-                {
-                    throw new KeyNotFoundException();
-                }
+                UsuarioEntity usuario = _sistemasContext.Usuarios.Find(idEntidad);
+                _sistemasContext.Usuarios.Remove(usuario);
+                _sistemasContext.GuardarCambios();
+            });
+        }
 
-                UsuarioEntity usuario = new UsuarioEntity
-                {
-                    IdUsuario = usuarioSinPassword.IdUsuario,
-                    DescripcionUsuario = usuarioSinPassword.DescripcionUsuario,
-                    IndicadorHabilitado = usuarioSinPassword.IndicadorHabilitado
-                };
-
-                return usuario;
+        public void Modificar()
+        {
+            Guardar(() =>
+            {
+                _sistemasContext.GuardarCambios();
             });
         }
 
         public ICollection<UsuarioEntity> ObtenerTodo()
         {
-            return Ejecutar(() =>
+            return Consultar(() =>
             {
                 ICollection<UsuarioSinPasswordDto> usuariosSinPassword = (from us in _sistemasContext.Usuarios
                                                                           where
@@ -104,9 +92,39 @@ namespace Sistemas.Datos.Repositorios
             });
         }
 
+        public UsuarioEntity ObtenerUsuarioPorUsername(string username)
+        {
+            return Consultar(() =>
+            {
+                UsuarioSinPasswordDto usuarioSinPassword = (from us in _sistemasContext.Usuarios
+                                                            where
+                                                            us.IndicadorEstado == EstadoEntidad.Activo &&
+                                                            us.DescripcionUsuario == username
+                                                            select new UsuarioSinPasswordDto
+                                                            {
+                                                                IdUsuario = us.IdUsuario,
+                                                                DescripcionUsuario = us.DescripcionUsuario,
+                                                                IndicadorHabilitado = us.IndicadorHabilitado
+                                                            }).FirstOrDefault();
+                if (usuarioSinPassword == null)
+                {
+                    throw new KeyNotFoundException();
+                }
+
+                UsuarioEntity usuario = new UsuarioEntity
+                {
+                    IdUsuario = usuarioSinPassword.IdUsuario,
+                    DescripcionUsuario = usuarioSinPassword.DescripcionUsuario,
+                    IndicadorHabilitado = usuarioSinPassword.IndicadorHabilitado
+                };
+
+                return usuario;
+            });
+        }
+
         public bool VerificarPassword(string username, string password)
         {
-            return Ejecutar(() =>
+            return Consultar(() =>
             {
                 bool passwordCorrecto = _sistemasContext.Usuarios.Any(p => p.IndicadorEstado == EstadoEntidad.Activo
                     && p.DescripcionUsuario == username && p.DescripcionPassword == password);

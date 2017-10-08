@@ -40,9 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\IBaseRepository.cs" />
+    <Compile Include="Base\IEscrituraRepository.cs" />
+    <Compile Include="Base\ILecturaRepository.cs" />
     <Compile Include="IAutorResenaRepository.cs" />
     <Compile Include="IGradoAcademicoRepository.cs" />
     <Compile Include="IPublicacionRepository.cs" />
+    <Compile Include="IResenaRepository.cs" />
     <Compile Include="ITipoDetallePublicacionRepository.cs" />
     <Compile Include="ITipoPublicacionRepository.cs" />
     <Compile Include="ITipoResenaRepository.cs" />

@@ -1,13 +1,11 @@
 ﻿using Sistemas.Entidades;
-using System.Collections.Generic;
+using Sistemas.Repositorios.Base;
 
 namespace Sistemas.Repositorios
 {
-    public interface IUsuarioRepository
+    public interface IUsuarioRepository : IBaseRepository<UsuarioEntity>
     {
-        void Crear(UsuarioEntity usuario);
         bool VerificarPassword(string username, string password);
         UsuarioEntity ObtenerUsuarioPorUsername(string username);
-        ICollection<UsuarioEntity> ObtenerTodo();
     }
 }

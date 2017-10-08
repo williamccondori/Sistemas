@@ -18,26 +18,42 @@ namespace Sistemas.Datos.Repositorios
             _sistemasContext = new SistemasContext();
         }
 
-        public void Crear(PublicacionEntity publicacion)
+        public void Crear(PublicacionEntity entidad)
         {
-            Ejecutar(() =>
+            Guardar(() =>
             {
-                _sistemasContext.Publicaciones.Add(publicacion);
+                _sistemasContext.Publicaciones.Add(entidad);
 
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
+        public void Eliminar(object idEntidad)
+        {
+            Eliminar(() =>
+            {
+                PublicacionEntity publicacion = _sistemasContext.Publicaciones.Find(idEntidad);
+                _sistemasContext.Publicaciones.Remove(publicacion);
+                _sistemasContext.GuardarCambios();
+            });
+        }
+
+        public void Modificar()
+        {
+            Guardar(() =>
+            {
                 _sistemasContext.GuardarCambios();
             });
         }
 
         public ICollection<PublicacionEntity> ObtenerPorTipo(string idTipoPublicacion)
         {
-            return Ejecutar(() =>
+            return Consultar(() =>
             {
-                ICollection<PublicacionEntity> publicaciones = _sistemasContext.Publicaciones
-                .Include(p => p.TipoPublicacionX)
-                .Include(p => p.DetallePublicacionS)
-                .Include(p => p.DetallePublicacionS.Select(g => g.TipoDetallePublicacionX))
-                .Where(
-                    p => p.IdTipoPublicacion == idTipoPublicacion && p.IndicadorEstado == EstadoEntidad.Activo).ToList();
+                IQueryable<PublicacionEntity> consulta = GenerarConsultaConDetalles();
+
+                ICollection<PublicacionEntity> publicaciones = consulta
+                .Where(p => p.IdTipoPublicacion == idTipoPublicacion && p.IndicadorEstado == EstadoEntidad.Activo).ToList();
 
                 return publicaciones;
             });
@@ -45,16 +61,25 @@ namespace Sistemas.Datos.Repositorios
 
         public ICollection<PublicacionEntity> ObtenerTodo()
         {
-            return Ejecutar(() =>
+            return Consultar(() =>
             {
-                ICollection<PublicacionEntity> publicaciones = _sistemasContext.Publicaciones
-                .Include(p => p.TipoPublicacionX)
-                .Include(p => p.DetallePublicacionS)
-                .Include(p => p.DetallePublicacionS.Select(g => g.TipoDetallePublicacionX))
+                IQueryable<PublicacionEntity> consulta = GenerarConsultaConDetalles();
+
+                ICollection<PublicacionEntity> publicaciones = consulta
                 .Where(p => p.IndicadorEstado == EstadoEntidad.Activo).Take(100).ToList();
 
                 return publicaciones;
             });
+        }
+
+        private IQueryable<PublicacionEntity> GenerarConsultaConDetalles()
+        {
+            IQueryable<PublicacionEntity> consulta = _sistemasContext.Publicaciones
+                .Include(p => p.TipoPublicacionX)
+                .Include(p => p.DetallePublicacionS)
+                .Include(p => p.DetallePublicacionS.Select(g => g.TipoDetallePublicacionX));
+
+            return consulta;
         }
     }
 }
