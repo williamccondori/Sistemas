@@ -42,10 +42,24 @@
         };
 
         $scope.EliminarUsuario = function (usuario) {
+
+            swal(
+                {
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!"
+                },
+                alert("Eliminar")
+            );
+
+
             $scope.Formulario = EstadoFormulario.Eliminar;
             $scope.IniciarUsuario(usuario);
             $scope.Usuario.Estado = EstadoObjeto.Borrado;
-            //$scope.GuardarResena();
+            $scope.GuardarUsuario();
         };
 
         $scope.CerrarUsuario = function () {
@@ -60,13 +74,11 @@
                 if (response.Estado) {
                     $scope.ObtenerUsuarios();
                 } else {
-                    console.log(response.Mensaje);
+                    swal("Error", response.Mensaje, "warning");
                 }
             });
         };
-
         
-
         $scope.ObtenerUsuarios = function () {
             UsuarioFactory.ObtenerUsuarios().then(function (response) {
                 if (response.Estado) {

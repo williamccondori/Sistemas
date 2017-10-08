@@ -1,4 +1,5 @@
 ﻿angular.module('EpisApp', [
     'ngResource',
-    'summernote'
+    'summernote',
+    'ngAlertify'
 ]);

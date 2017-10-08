@@ -16,6 +16,7 @@ namespace Sistemas.Administracion.Controllers
         private ITipoResenaService _tipoResenaService;
         private IGradoAcademicoService _gradoAcademicoService;
         private IAutorResenaService _autorResenaService;
+        private IResenaService _resenaService;
 
         public ActionResult Index()
         {
@@ -182,6 +183,40 @@ namespace Sistemas.Administracion.Controllers
                 _publicacionService = new PublicacionService();
                 publicacionDto.Usuario = _usuario;
                 _publicacionService.Guardar(publicacionDto);
+                return Response<bool>.Correcto(true);
+            }), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerResenas()
+        {
+            return Json(Ejecutar(() =>
+            {
+                _resenaService = new ResenaService();
+                IList<ResenaDto> resenasDto = _resenaService.ObtenerTodo();
+                return Response<IList<ResenaDto>>.Correcto(resenasDto);
+            }), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerResenasPorTipo(string idTipoResena)
+        {
+            return Json(Ejecutar(() =>
+            {
+                _resenaService = new ResenaService();
+                IList<ResenaDto> ResenaesDto = _resenaService.ObtenerPorTipo(idTipoResena);
+                return Response<IList<ResenaDto>>.Correcto(ResenaesDto);
+            }), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarResena(ResenaDto resenaDto)
+        {
+            return Json(Ejecutar(() =>
+            {
+                _resenaService = new ResenaService();
+                resenaDto.Usuario = _usuario;
+                _resenaService.Guardar(resenaDto);
                 return Response<bool>.Correcto(true);
             }), JsonRequestBehavior.AllowGet);
         }

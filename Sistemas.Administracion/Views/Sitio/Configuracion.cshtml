@@ -283,18 +283,18 @@
                                         <thead>
                                             <tr>
                                                 <th class="col-xs-2">Código</th>
-                                                <th>Grado académico</th>
                                                 <th>Nombre</th>
                                                 <th>Apellido</th>
+                                                <th>Grado académico</th>
                                                 <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearAutorResena()">Crear</button></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="autorResena in AutoresResena">
                                                 <td><span class="text-id" ng-bind="autorResena.Id"></span></td>
-                                                <td><span ng-bind="autorResena.GradoAcademico.Titulo"></span></td>
                                                 <td><span ng-bind="autorResena.Nombre"></span></td>
                                                 <td><span ng-bind="autorResena.Apellido"></span></td>
+                                                <td><span ng-bind="autorResena.GradoAcademico.Titulo"></span></td>
                                                 <td>
                                                     <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarAutorResena(autorResena)">Modificar</button>
                                                     <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarAutorResena(autorResena)">Eliminar</button>

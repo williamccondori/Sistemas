@@ -2,11 +2,16 @@
 
     CaracteristicaController.$inject = [
         '$scope',
+        'alertify',
         'GradoAcademicoFactory',
         'AutorResenaFactory'
     ];
 
-    function CaracteristicaController($scope, GradoAcademicoFactory, AutorResenaFactory) {
+    function CaracteristicaController($scope, alertify, GradoAcademicoFactory, AutorResenaFactory) {
+
+        alertify
+            .okBtn("Aceptar")
+            .cancelBtn("Cancelar");
 
         $scope.GradosAcademicos = [];
         $scope.AutoresResena = [];
@@ -51,24 +56,29 @@
             Bootstrap.AbrirModal("#ModalGradoAcademico");
         };
 
-        $scope.EliminarGradoAcademico = function (gradoAcademico) {
-            $scope.Formulario = EstadoFormulario.Eliminar;
-            $scope.IniciarGradoAcademico(gradoAcademico);
-            $scope.GradoAcademico.Estado = EstadoObjeto.Borrado;
-            $scope.GuardarResena();
+        $scope.EliminarGradoAcademico = function (gradoAcademico) {           
+            alertify.confirm(MensajeConfirmacion.Eliminar, function () {
+                $scope.Formulario = EstadoFormulario.Eliminar;
+                $scope.IniciarGradoAcademico(gradoAcademico);
+                $scope.GradoAcademico.Estado = EstadoObjeto.Borrado;
+                $scope.GuardarGradoAcademico();
+            });
         };
 
         $scope.CerrarGradoAcademico = function () {
-            Bootstrap.CerrarModal("#ModalGradoAcademico");
+            alertify.confirm(MensajeConfirmacion.Cancelar, function () {
+                Bootstrap.CerrarModal("#ModalGradoAcademico");
+            });
         };
 
         $scope.GuardarGradoAcademico = function () {
             Bootstrap.CerrarModal("#ModalGradoAcademico");
             GradoAcademicoFactory.GuardarGradoAcademico($scope.GradoAcademico).then(function (response) {
                 if (response.Estado) {
+                    alertify.success(MensajeRespuesta.Exito.Descripcion);
                     $scope.ObtenerGradosAcademicos();
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -78,7 +88,7 @@
                 if (response.Estado) {
                     $scope.GradosAcademicos = response.Datos;
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -113,23 +123,28 @@
         };
 
         $scope.EliminarAutorResena = function (autorResena) {
-            $scope.Formulario = EstadoFormulario.Eliminar;
-            $scope.IniciarAutorResena(autorResena);
-            $scope.AutorResena.Estado = EstadoObjeto.Borrado;
-            $scope.GuardarAutorResena();
+            alertify.confirm(MensajeConfirmacion.Eliminar, function () {
+                $scope.Formulario = EstadoFormulario.Eliminar;
+                $scope.IniciarAutorResena(autorResena);
+                $scope.AutorResena.Estado = EstadoObjeto.Borrado;
+                $scope.GuardarAutorResena();
+            });
         };
 
         $scope.CerrarAutorResena = function () {
-            Bootstrap.CerrarModal("#ModalAutorResena");
+            alertify.confirm(MensajeConfirmacion.Cancelar, function () {
+                Bootstrap.CerrarModal("#ModalAutorResena");
+            });
         };
 
         $scope.GuardarAutorResena = function () {
             Bootstrap.CerrarModal("#ModalAutorResena");
             AutorResenaFactory.GuardarAutorResena($scope.AutorResena).then(function (response) {
                 if (response.Estado) {
+                    alertify.success(MensajeRespuesta.Exito.Descripcion);
                     $scope.ObtenerAutoresResena();
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -139,7 +154,7 @@
                 if (response.Estado) {
                     $scope.AutoresResena = response.Datos;
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };

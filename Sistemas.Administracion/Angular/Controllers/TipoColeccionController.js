@@ -2,13 +2,18 @@
 
     TipoColeccionController.$inject = [
         '$scope',
+        'alertify',
         'TipoPublicacionFactory',
         'TipoDetallePublicacionFactory',
         'TipoResenaFactory'
     ];
 
-    function TipoColeccionController($scope, TipoPublicacionFactory, TipoDetallePublicacionFactory
+    function TipoColeccionController($scope, alertify, TipoPublicacionFactory, TipoDetallePublicacionFactory
         , TipoResenaFactory) {
+
+        alertify
+            .okBtn("Aceptar")
+            .cancelBtn("Cancelar");
 
         $scope.TiposPublicacion = [];
         $scope.TiposDetallePublicacion = [];
@@ -61,23 +66,28 @@
         };
 
         $scope.EliminarTipoPublicacion = function (tipoPublicacion) {
-            $scope.Formulario = EstadoFormulario.Eliminar;
-            $scope.IniciarTipoPublicacion(tipoPublicacion);
-            $scope.TipoPublicacion.Estado = EstadoObjeto.Borrado;
-            $scope.GuardarPublicacion();
+            alertify.confirm(MensajeConfirmacion.Eliminar, function () {
+                $scope.Formulario = EstadoFormulario.Eliminar;
+                $scope.IniciarTipoPublicacion(tipoPublicacion);
+                $scope.TipoPublicacion.Estado = EstadoObjeto.Borrado;
+                $scope.GuardarTipoPublicacion();
+            });
         };
 
         $scope.CerrarTipoPublicacion = function () {
-            Bootstrap.CerrarModal("#ModalTipoPublicacion");
+            alertify.confirm(MensajeConfirmacion.Cancelar, function () {
+                Bootstrap.CerrarModal("#ModalTipoPublicacion");
+            });
         };
 
         $scope.GuardarTipoPublicacion = function () {
             Bootstrap.CerrarModal("#ModalTipoPublicacion");
             TipoPublicacionFactory.GuardarTipoPublicacion($scope.TipoPublicacion).then(function (response) {
                 if (response.Estado) {
+                    alertify.success(MensajeRespuesta.Exito.Descripcion);
                     $scope.ObtenerTiposPublicacion();
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -87,7 +97,7 @@
                 if (response.Estado) {
                     $scope.TiposPublicacion = response.Datos;
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -121,23 +131,28 @@
         };
 
         $scope.EliminarTipoDetallePublicacion = function (tipoDetallePublicacion) {
-            $scope.Formulario = EstadoFormulario.Eliminar;
-            $scope.IniciarTipoDetallePublicacion(tipoDetallePublicacion);
-            $scope.TipoDetallePublicacion.Estado = EstadoObjeto.Borrado;
-            $scope.GuardarDetallePublicacion();
+            alertify.confirm(MensajeConfirmacion.Eliminar, function () {
+                $scope.Formulario = EstadoFormulario.Eliminar;
+                $scope.IniciarTipoDetallePublicacion(tipoDetallePublicacion);
+                $scope.TipoDetallePublicacion.Estado = EstadoObjeto.Borrado;
+                $scope.GuardarTipoDetallePublicacion();
+            });
         };
 
         $scope.CerrarTipoDetallePublicacion = function () {
-            Bootstrap.CerrarModal("#ModalTipoDetallePublicacion");
+            alertify.confirm(MensajeConfirmacion.Cancelar, function () {
+                Bootstrap.CerrarModal("#ModalTipoDetallePublicacion");
+            });
         };
 
         $scope.GuardarTipoDetallePublicacion = function () {
             Bootstrap.CerrarModal("#ModalTipoDetallePublicacion");
             TipoDetallePublicacionFactory.GuardarTipoDetallePublicacion($scope.TipoDetallePublicacion).then(function (response) {
                 if (response.Estado) {
+                    alertify.success(MensajeRespuesta.Exito.Descripcion);
                     $scope.ObtenerTiposDetallePublicacion();
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -147,7 +162,7 @@
                 if (response.Estado) {
                     $scope.TiposDetallePublicacion = response.Datos;
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -181,28 +196,28 @@
         };
 
         $scope.EliminarTipoResena = function (tipoResena) {
-            $scope.Formulario = EstadoFormulario.Eliminar;
-            $scope.IniciarTipoResena(tipoResena);
-            $scope.TipoResena.Estado = EstadoObjeto.Borrado;
-            $scope.GuardarResena();
+            alertify.confirm(MensajeConfirmacion.Eliminar, function () {
+                $scope.Formulario = EstadoFormulario.Eliminar;
+                $scope.IniciarTipoResena(tipoResena);
+                $scope.TipoResena.Estado = EstadoObjeto.Borrado;
+                $scope.GuardarTipoResena();
+            });
         };
 
         $scope.CerrarTipoResena = function () {
-            Bootstrap.CerrarModal("#ModalTipoResena");
-        };
-
-        $scope.GuardarTipoResena = function () {
-            Bootstrap.CerrarModal("#ModalTipoResena");
-            $scope.TiposResena.push($scope.TipoResena);
+            alertify.confirm(MensajeConfirmacion.Cancelar, function () {
+                Bootstrap.CerrarModal("#ModalTipoResena");
+            });
         };
 
         $scope.GuardarTipoResena = function () {
             Bootstrap.CerrarModal("#ModalTipoResena");
             TipoResenaFactory.GuardarTipoResena($scope.TipoResena).then(function (response) {
                 if (response.Estado) {
+                    alertify.success(MensajeRespuesta.Exito.Descripcion);
                     $scope.ObtenerTiposResena();
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -212,7 +227,7 @@
                 if (response.Estado) {
                     $scope.TiposResena = response.Datos;
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
