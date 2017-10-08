@@ -12,8 +12,8 @@
         , TipoResenaFactory) {
 
         alertify
-            .okBtn("Aceptar")
-            .cancelBtn("Cancelar");
+            .okBtn("Si")
+            .cancelBtn("No");
 
         $scope.TiposPublicacion = [];
         $scope.TiposDetallePublicacion = [];

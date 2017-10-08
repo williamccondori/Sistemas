@@ -2,11 +2,16 @@
 
     PublicacionController.$inject = [
         '$scope',
+        'alertify',
         'PublicacionFactory',
         'TipoPublicacionFactory'
     ];
 
-    function PublicacionController($scope, PublicacionFactory, TipoPublicacionFactory) {
+    function PublicacionController($scope, alertify, PublicacionFactory, TipoPublicacionFactory) {
+
+        alertify
+            .okBtn("Si")
+            .cancelBtn("No");
 
         $scope.TiposPublicacion = [];
         $scope.Publicaciones = [];
@@ -46,23 +51,28 @@
         };
 
         $scope.EliminarPublicacion = function (publicacion) {
-            $scope.Formulario = EstadoFormulario.Eliminar;
-            $scope.IniciarPublicacion(publicacion);
-            $scope.Publicacion.Estado = EstadoObjeto.Borrado;
-            $scope.GuardarPublicacion();
+            alertify.confirm(MensajeConfirmacion.Eliminar, function () {
+                $scope.Formulario = EstadoFormulario.Eliminar;
+                $scope.IniciarPublicacion(publicacion);
+                $scope.Publicacion.Estado = EstadoObjeto.Borrado;
+                $scope.GuardarPublicacion();
+            });
         };
 
         $scope.CerrarPublicacion = function () {
-            Bootstrap.CerrarModal("#ModalPublicacion");
+            alertify.confirm(MensajeConfirmacion.Cancelar, function () {
+                Bootstrap.CerrarModal("#ModalPublicacion");
+            });
         };
 
         $scope.GuardarPublicacion = function () {
             Bootstrap.CerrarModal("#ModalPublicacion");
             PublicacionFactory.GuardarPublicacion($scope.Publicacion).then(function (response) {
                 if (response.Estado) {
+                    alertify.success(MensajeRespuesta.Exito.Descripcion);
                     $scope.ObtenerPublicaciones();
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -72,7 +82,7 @@
                 if (response.Estado) {
                     $scope.TiposPublicacion = response.Datos;
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };
@@ -82,7 +92,7 @@
                 if (response.Estado) {
                     $scope.Publicaciones = response.Datos;
                 } else {
-                    console.log(response.Mensaje);
+                    alertify.error(response.Mensaje);
                 }
             });
         };

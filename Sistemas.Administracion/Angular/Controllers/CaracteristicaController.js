@@ -10,8 +10,8 @@
     function CaracteristicaController($scope, alertify, GradoAcademicoFactory, AutorResenaFactory) {
 
         alertify
-            .okBtn("Aceptar")
-            .cancelBtn("Cancelar");
+            .okBtn("Si")
+            .cancelBtn("No");
 
         $scope.GradosAcademicos = [];
         $scope.AutoresResena = [];

@@ -1,9 +1,17 @@
 ﻿(function (module) {
 
-    UsuarioController.$inject = ['$scope', 'UsuarioFactory'];
+    UsuarioController.$inject = [
+        '$scope',
+        'alertify',
+        'UsuarioFactory'
+    ];
 
-    function UsuarioController($scope, UsuarioFactory) {
-        
+    function UsuarioController($scope, alertify, UsuarioFactory) {
+
+        alertify
+            .okBtn("Si")
+            .cancelBtn("No");
+
         $scope.Usuarios = [];
 
         $scope.Iniciar = function () {
