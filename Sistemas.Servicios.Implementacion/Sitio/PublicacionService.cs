@@ -48,11 +48,13 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             }
         }
 
-        public IList<PublicacionDto> ObtenerPorTipo(string idTipoPublicacion)
+        public IList<PublicacionDto> ObtenerPorTipo(string idTipoPublicacion, int numeroElementos = 0)
         {
             ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerPorTipo(idTipoPublicacion);
 
-            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).ToList();
+            List<PublicacionDto> publicacionesDto = numeroElementos == 0
+               ? publicaciones.Select(p => MapearPublicacion(p)).ToList()
+               : publicaciones.Select(p => MapearPublicacion(p)).Take(numeroElementos).ToList();
 
             return publicacionesDto;
         }

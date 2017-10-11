@@ -13,6 +13,8 @@ namespace Sistemas.Api.Controllers
     {
         private IPublicacionService _publicacionService;
 
+        private const string Noticia = "NO";
+
         [Route(Predeterminado)]
         [HttpGet]
         public Response<IList<PublicacionDto>> Obtener()
@@ -20,7 +22,7 @@ namespace Sistemas.Api.Controllers
             return Ejecutar(() =>
             {
                 _publicacionService = new PublicacionService();
-                IList<PublicacionDto> noticias = _publicacionService.ObtenerTodo();
+                IList<PublicacionDto> noticias = _publicacionService.ObtenerPorTipo(Noticia);
                 return Response<IList<PublicacionDto>>.Correcto(noticias);
             });
         }
@@ -32,7 +34,7 @@ namespace Sistemas.Api.Controllers
             return Ejecutar(() =>
             {
                 _publicacionService = new PublicacionService();
-                IList<PublicacionDto> noticias = _publicacionService.ObtenerTodo(numeroElementos);
+                IList<PublicacionDto> noticias = _publicacionService.ObtenerPorTipo(Noticia, numeroElementos);
                 return Response<IList<PublicacionDto>>.Correcto(noticias);
             });
         }
