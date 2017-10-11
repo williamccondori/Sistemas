@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Constantes\EstadoEntidad.cs" />
     <Compile Include="Excepciones\DeleteException.cs" />
+    <Compile Include="Extensiones\DateTimeExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\Encriptacion.cs" />
     <Compile Include="UsuarioSistema.cs" />

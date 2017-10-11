@@ -18,7 +18,7 @@
     </ol>
 </section>
 
-<section>
+<section ng-controller="ResenaController" ng-init="Iniciar()">
     <div class="row">
         <div class="col-xs-24 col-sm-6 col-md-6 col-lg-6">
             <div class="panel panel-default epis--panel-indice">
@@ -48,24 +48,26 @@
         <div class="col-xs-24 col-sm-18 col-md-18 col-lg-18">
             <div class="panel panel-default epis--panel-tabla">
                 <div class="panel-heading">
-                    Reseñas <span class="badge">2</span>
+                    Reseñas <span class="badge" ng-bind="Resenas.length"></span>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-condensed table-hover">
                         <thead>
                             <tr>
                                 <th class="col-xs-2">Código</th>
-                                <th>Titulo</th>
-                                <th><button class="btn btn-xs btn-success">Crear</button></th>
+                                <th>Tipo de reseña</th>
+                                <th>Título</th>
+                                <th><button class="btn btn-xs btn-success" ng-click="CrearResena()">Crear</button></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
+                            <tr ng-repeat="resena in Resenas">
+                                <td><span ng-bind="resena.Id"></span></td>
+                                <td><span ng-bind="resena.TipoResena.Descripcion"></span></td>
+                                <td><span ng-bind="resena.Titulo"></span></td>
                                 <td>
-                                    <button class="btn btn-xs btn-warning">Modificar</button>
-                                    <button class="btn btn-xs btn-danger">Eliminar</button>
+                                    <button class="btn btn-xs btn-warning" ng-click="ModificarResena(resena)">Modificar</button>
+                                    <button class="btn btn-xs btn-danger" ng-click="EliminarResena(resena)">Eliminar</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -74,5 +76,102 @@
             </div>
         </div>
     </div>
-</section>
 
+    <div class="modal fade" id="ModalResena">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Ingrese la información de las reseñas
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label>Código:</label>
+                                        <input type="text" class="form-control" ng-model="Resena.Id" ng-readonly="true">
+                                    </div>
+                                </div>
+                                <div class="col-xs-24 col-sm-10 col-md-10 col-lg-10">
+                                    <div class="form-group">
+                                        <label>Tipo de reseña:</label>
+                                        <select class="form-control" ng-model="Resena.IdTipoResena" ng-options="TipoResena.Id as TipoResena.Descripcion for TipoResena in TiposResena">
+                                            <option value="">[Seleccione]</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-24 col-sm-10 col-md-10 col-lg-10">
+                                    <div class="form-group">
+                                        <label>Autor:</label>
+                                        <select class="form-control" ng-model="Resena.IdAutorResena" ng-options="AutorResena.Id as AutorResena.Nombre + ' ' +  AutorResena.Apellido for AutorResena in AutoresResena">
+                                            <option value="">[Seleccione]</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                                    <div class="form-group">
+                                        <label>Título:</label>
+                                        <input type="text" class="form-control" ng-model="Resena.Titulo">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                                    <div class="form-group">
+                                        <label>Subtítulo:</label>
+                                        <input type="text" class="form-control" ng-model="Resena.Subtitulo">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                                    <div class="form-group">
+                                        <label>Resumen:</label>
+                                        <textarea class="form-control" ng-model="Resena.Resumen" cols="2" rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                                    <div class="form-group">
+                                        <label>Reseña:</label>
+                                        <div summernote ng-model="Resena.Resena"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                                    <div class="form-group">
+                                        <label>Recurso:</label>
+                                        <input type="text" class="form-control" ng-model="Resena.Recurso">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                                    <div class="form-group">
+                                        <label>Url:</label>
+                                        <input type="text" class="form-control" ng-model="Resena.Url">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer text-right">
+                            <button type="button" class="btn btn-default" ng-click="CerrarResena()">Cerrar</button>
+                            <button type="button" class="btn btn-success" ng-click="GuardarResena()"><span ng-bind="TextoBotonGuardar()"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script src="~/Angular/Factories/AutorResenaFactory.js"></script>
+    <script src="~/Angular/Factories/TipoResenaFactory.js"></script>
+    <script src="~/Angular/Factories/ResenaFactory.js"></script>
+    <script src="~/Angular/Controllers/ResenaController.js"></script>
+}

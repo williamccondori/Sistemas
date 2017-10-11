@@ -1,5 +1,4 @@
 ﻿using Sistemas.Dtos.Shared;
-using System;
 using System.Collections.Generic;
 
 namespace Sistemas.Dtos.Sitio
@@ -14,7 +13,7 @@ namespace Sistemas.Dtos.Sitio
         public string Resena { get; set; }
         public string Recurso { get; set; }
         public string Url { get; set; }
-        public DateTime Emision { get; set; }
+        public string Emision { get; set; }
         public TipoPublicacionDto TipoPublicacion { get; set; }
         public List<DetallePublicacionDto> Detalles { get; set; }
 

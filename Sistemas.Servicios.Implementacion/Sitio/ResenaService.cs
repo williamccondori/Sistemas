@@ -85,7 +85,7 @@ namespace Sistemas.Servicios.Implementacion.Sitio
                 },
                 Recurso = resena.DescripcionRecurso,
                 Resena = resena.DescripcionResena,
-                Resumen = resena.DescripcionResena,
+                Resumen = resena.DescripcionResumen,
                 Subtitulo = resena.DescripcionSubtitulo,
                 IdAutorResena = resena.IdAutorResena,
                 Titulo = resena.DescripcionTitulo,

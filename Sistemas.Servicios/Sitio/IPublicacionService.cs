@@ -7,6 +7,6 @@ namespace Sistemas.Servicios.Sitio
     {
         IList<PublicacionDto> ObtenerPorTipo(string idTipoPublicacion);
         void Guardar(PublicacionDto publicacionDto);
-        IList<PublicacionDto> ObtenerTodo();
+        IList<PublicacionDto> ObtenerTodo(int numeroElementos = 0);
     }
 }

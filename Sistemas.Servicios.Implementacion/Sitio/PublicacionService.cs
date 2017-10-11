@@ -4,6 +4,7 @@ using Sistemas.Dtos.Sitio;
 using Sistemas.Entidades;
 using Sistemas.Repositorios;
 using Sistemas.Servicios.Sitio;
+using Sistemas.Utilidades.Extensiones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,11 +57,13 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             return publicacionesDto;
         }
 
-        public IList<PublicacionDto> ObtenerTodo()
+        public IList<PublicacionDto> ObtenerTodo(int numeroElementos = 0)
         {
             ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerTodo();
 
-            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).ToList();
+            List<PublicacionDto> publicacionesDto = numeroElementos == 0
+                ? publicaciones.Select(p => MapearPublicacion(p)).ToList()
+                : publicaciones.Select(p => MapearPublicacion(p)).Take(numeroElementos).ToList();
 
             return publicacionesDto;
         }
@@ -74,7 +77,7 @@ namespace Sistemas.Servicios.Implementacion.Sitio
                 Usuario = publicacion.UsuarioModifico ?? publicacion.UsuarioRegistro,
 
                 Id = publicacion.IdPublicacion,
-                Emision = publicacion.FechaPublicacion,
+                Emision = publicacion.FechaPublicacion.ObtenerCadenaFecha(),
                 IdTipoPublicacion = publicacion.IdTipoPublicacion,
                 Recurso = publicacion.DescripcionRecurso,
                 Resena = publicacion.DescripcionResena,

@@ -55,7 +55,7 @@
                 $scope.Formulario = EstadoFormulario.Eliminar;
                 $scope.IniciarPublicacion(publicacion);
                 $scope.Publicacion.Estado = EstadoObjeto.Borrado;
-                $scope.GuardarPublicacion();
+                $scope.GuardarCambios();
             });
         };
 
@@ -66,14 +66,9 @@
         };
 
         $scope.GuardarPublicacion = function () {
-            Bootstrap.CerrarModal("#ModalPublicacion");
-            PublicacionFactory.GuardarPublicacion($scope.Publicacion).then(function (response) {
-                if (response.Estado) {
-                    alertify.success(MensajeRespuesta.Exito.Descripcion);
-                    $scope.ObtenerPublicaciones();
-                } else {
-                    alertify.error(response.Mensaje);
-                }
+            alertify.confirm(MensajeConfirmacion.Guardar, function () {
+                Bootstrap.CerrarModal("#ModalPublicacion");
+                $scope.GuardarCambios();
             });
         };
 
@@ -91,6 +86,17 @@
             PublicacionFactory.ObtenerPublicaciones().then(function (response) {
                 if (response.Estado) {
                     $scope.Publicaciones = response.Datos;
+                } else {
+                    alertify.error(response.Mensaje);
+                }
+            });
+        };
+
+        $scope.GuardarCambios = function () {
+            PublicacionFactory.GuardarPublicacion($scope.Publicacion).then(function (response) {
+                if (response.Estado) {
+                    alertify.success(MensajeRespuesta.Exito.Descripcion);
+                    $scope.ObtenerPublicaciones();
                 } else {
                     alertify.error(response.Mensaje);
                 }
