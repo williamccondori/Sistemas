@@ -1,3 +1,8 @@
+/**
+
+
+
+
 .epis-jumbotron h1
 {
     font-size: 2em;
@@ -139,12 +144,15 @@ body
 }
 
 
-
+*/
 
 
 /*
     epis--panel-indice 
 */
+
+/*
+
 
 .epis--panel-indice
 {
@@ -213,6 +221,10 @@ body
 /*
     epis--panel-tabla 
 */
+
+/**
+
+
 
 .epis--panel-tabla
 {
@@ -324,6 +336,11 @@ body
     epis--tab-pagina
 */
 
+
+/**
+
+
+
 .epis--tab-pagina
 {
     border-bottom: none;
@@ -397,3 +414,4 @@ label
     outline: none !important;
 }
 
+    */
