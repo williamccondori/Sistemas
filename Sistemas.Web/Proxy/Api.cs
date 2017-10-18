@@ -13,10 +13,10 @@ namespace Sistemas.Web.Proxy
 
         public Api(string ruta)
         {
-            this.ruta = ruta;
+            this.ruta = ruta + "api/";
         }
 
-        protected T Ejecutar<T>(string recurso, Metodo metodo = Metodo.Get, object parametro = null)
+        public T Ejecutar<T>(string recurso, Metodo metodo = Metodo.Get, object parametro = null)
         {
             string resultado = string.Empty;
 

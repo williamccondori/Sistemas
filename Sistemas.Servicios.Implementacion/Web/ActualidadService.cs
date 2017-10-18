@@ -20,10 +20,10 @@ namespace Sistemas.Servicios.Implementacion.Web
             List<PublicacionDto> publicaciones = articulos.Select(p => new PublicacionDto
             {
                 Titulo = p.Titulo,
-                Fecha = p.Fecha,
+                Emision = p.Fecha,
                 Resena = p.Descripcion,
                 Url = p.Enlace,
-                Id = 0,
+                Id = long.Parse(p.Id),
                 Recurso = p.Imagen
             }).ToList();
 

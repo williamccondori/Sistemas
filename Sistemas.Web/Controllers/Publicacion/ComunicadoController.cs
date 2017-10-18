@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Sistemas.Web.Controllers.Publicacion
 {
-    public class ActualidadController : BaseController
+    public class ComunicadoController : BaseController
     {
         public ActionResult Index()
         {
@@ -15,15 +15,15 @@ namespace Sistemas.Web.Controllers.Publicacion
         }
 
         [HttpPost]
-        public JsonResult ObtenerActualidades()
+        public JsonResult ObtenerComunicados()
         {
             return Json(Ejecutar(() =>
             {
                 Api api = new Api(_ruta);
 
-                IList<PublicacionDto> actualidades = api.Ejecutar<IList<PublicacionDto>>("actualidad");
+                IList<PublicacionDto> comunicados = api.Ejecutar<IList<PublicacionDto>>("comunicado");
 
-                return Response<IList<PublicacionDto>>.Correcto(actualidades);
+                return Response<IList<PublicacionDto>>.Correcto(comunicados);
 
             }), JsonRequestBehavior.AllowGet);
         }

@@ -93,6 +93,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Angular\app.js" />
+    <Content Include="Angular\config.js" />
+    <Content Include="Angular\Controllers\ComunicadoController.js" />
+    <Content Include="Angular\Controllers\PublicacionController.js" />
+    <Content Include="Angular\Controllers\NoticiaController.js" />
+    <Content Include="Angular\Controllers\ActualidadController.js" />
+    <Content Include="Angular\Factories\ComunicadoFactory.js" />
+    <Content Include="Angular\Factories\PublicacionFactory.js" />
+    <Content Include="Angular\Factories\NoticiaFactory.js" />
+    <Content Include="Angular\Factories\BaseFactory.js" />
+    <Content Include="Angular\Factories\ActualidadFactory.js" />
+    <Content Include="Angular\Filters\FechaFilter.js" />
+    <Content Include="Angular\Filters\TextoFilter.js" />
+    <Content Include="Angular\Services\HelperService.js" />
+    <Content Include="Angular\Utilidades\UtilidadesBootstrap.js" />
+    <Content Include="Angular\Utilidades\UtilidadesDefinicion.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -111,10 +127,13 @@
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-resource.min.js" />
+    <Content Include="Scripts\angular-sanitize.js" />
+    <Content Include="Scripts\angular-sanitize.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -124,12 +143,18 @@
     <Content Include="Web.config" />
     <Content Include="Views\Noticia\Index.cshtml" />
     <Content Include="Views\Actualidad\Index.cshtml" />
+    <Content Include="Views\Comunicado\Index.cshtml" />
+    <Content Include="Views\Publicacion\Index.cshtml" />
+    <Content Include="Views\Noticia\Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\EscuelaController.cs" />
     <Compile Include="Controllers\Publicacion\ActualidadController.cs" />
+    <Compile Include="Controllers\Publicacion\ComunicadoController.cs" />
     <Compile Include="Controllers\Publicacion\NoticiaController.cs" />
+    <Compile Include="Controllers\Publicacion\PublicacionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

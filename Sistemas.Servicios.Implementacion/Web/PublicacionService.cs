@@ -3,12 +3,12 @@ using Sistemas.Dtos.Shared;
 using Sistemas.Dtos.Sitio;
 using Sistemas.Entidades;
 using Sistemas.Repositorios;
-using Sistemas.Servicios.Sitio;
+using Sistemas.Servicios.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sistemas.Servicios.Implementacion.Sitio
+namespace Sistemas.Servicios.Implementacion.Web
 {
     public class PublicacionService : IPublicacionService
     {
@@ -19,52 +19,22 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             _publicacionRepository = new PublicacionRepository();
         }
 
-        public void Guardar(PublicacionDto publicacionDto)
+        public IList<PublicacionDto> ObtenerXTipo(string idTipoPublicacion)
         {
-            if (publicacionDto.Estado == EstadoObjeto.Nuevo)
-            {
-                PublicacionEntity publicacion = PublicacionEntity.Crear(publicacionDto.IdTipoPublicacion, publicacionDto.Titulo
-                    , publicacionDto.Subtitulo, publicacionDto.Resumen, publicacionDto.Resena, publicacionDto.Recurso
-                    , publicacionDto.Detalles.Select(p => DetallePublicacionEntity.Crear(p.IdTipoDetallePublicacion, p.Titulo
-                    , p.Resumen, p.Recurso, publicacionDto.Usuario)).ToList()
-                    , publicacionDto.Usuario);
+            int anio = DateTime.Now.Year;
 
-                publicacion.ValidarObligatorios();
+            ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerXTipoXAnio(idTipoPublicacion, anio);
 
-                _publicacionRepository.Crear(publicacion);
-            }
-            else if (publicacionDto.Estado == EstadoObjeto.Modificado)
-            {
-
-            }
-            else if (publicacionDto.Estado == EstadoObjeto.Borrado)
-            {
-                _publicacionRepository.Eliminar(publicacionDto.Id);
-            }
-            else
-            {
-                throw new Exception("El método no es el correcto");
-            }
-        }
-
-        public IList<PublicacionDto> ObtenerPorTipo(string idTipoPublicacion, int numeroElementos = 0)
-        {
-            ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerPorTipo(idTipoPublicacion);
-
-            List<PublicacionDto> publicacionesDto = numeroElementos == 0
-               ? publicaciones.Select(p => MapearPublicacion(p)).ToList()
-               : publicaciones.Select(p => MapearPublicacion(p)).Take(numeroElementos).ToList();
+            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).ToList();
 
             return publicacionesDto;
         }
 
-        public IList<PublicacionDto> ObtenerTodo(int numeroElementos = 0)
+        public IList<PublicacionDto> ObtenerXTipoHistorico(string idTipoPublicacion, int anio)
         {
-            ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerTodo();
+            ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerXTipoXAnio(idTipoPublicacion, anio);
 
-            List<PublicacionDto> publicacionesDto = numeroElementos == 0
-                ? publicaciones.Select(p => MapearPublicacion(p)).ToList()
-                : publicaciones.Select(p => MapearPublicacion(p)).Take(numeroElementos).ToList();
+            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).ToList();
 
             return publicacionesDto;
         }
@@ -84,8 +54,8 @@ namespace Sistemas.Servicios.Implementacion.Sitio
                 Resena = publicacion.DescripcionResena,
                 Resumen = publicacion.DescripcionResumen,
                 Subtitulo = publicacion.DescripcionSubtitulo,
-                Url = publicacion.DescripcionUrl,
                 Titulo = publicacion.DescripcionTitulo,
+                Url = publicacion.DescripcionUrl,
                 TipoPublicacion = new TipoPublicacionDto
                 {
                     Id = publicacion.TipoPublicacionX.IdTipoPublicacion,
@@ -112,6 +82,13 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             };
 
             return publicacionDto;
+        }
+
+        public PublicacionDto ObtenerXId(long idPublicacion)
+        {
+            PublicacionEntity publicacion = _publicacionRepository.ObtenerXId(idPublicacion);
+
+            return MapearPublicacion(publicacion);
         }
     }
 }

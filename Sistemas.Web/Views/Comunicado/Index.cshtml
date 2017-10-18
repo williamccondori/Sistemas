@@ -1,6 +1,6 @@
-﻿ @{ ViewBag.Title = "Actualidades tecnológicas"; }
+﻿ @{ ViewBag.Title = "Comunicados"; }
 
-<section ng-controller="ActualidadController" ng-init="Iniciar()">
+<section ng-controller="ComunicadoController" ng-init="Iniciar()">
     <div class="row">
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
             
@@ -12,8 +12,8 @@
                   <div class="list-group">
                       <a href="@Url.Action("Index", "Noticia")" class="list-group-item">Noticias</a>
                       <a href="@Url.Action("Index", "Evento")" class="list-group-item">Eventos</a>
-                      <a href="@Url.Action("Index", "Comunicado")" class="list-group-item">Comunicados</a>
-                      <a href="@Url.Action("Index", "Actualidad")" class="list-group-item active">Actualidades tecnológicas</a>
+                      <a href="@Url.Action("Index", "Comunicado")" class="list-group-item active">Comunicados</a>
+                      <a href="@Url.Action("Index", "Actualidad")" class="list-group-item">Actualidades tecnológicas</a>
                       <a href="@Url.Action("Index", "Publicacion")" class="list-group-item">Publicaciones</a>
                       <a href="@Url.Action("Index", "GaleriaFoto")" class="list-group-item">Galería de fotos</a>
                       <a href="@Url.Action("Index", "GaleriaVideo")" class="list-group-item">Galería de vídeos</a>
@@ -27,22 +27,22 @@
                     <h1>@ViewBag.Title</h1>
                     <hr />
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="actividad in ActualidadesPrincipal">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="comunicado in ComunicadosPrincipal">
                             <div class="thumbnail">
-                                <a target="_blank" href="{{ actividad.Url }}"><img src="{{ actividad.Recurso }}" alt="imagen"></a>
+                                <a target="_blank" href="{{ comunicado.Url }}"><img src="{{ comunicado.Recurso }}" alt="imagen"></a>
                                 <div class="caption">
-                                    <p ng-bind="actividad.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></p>
-                                    <h3><span ng-bind="actividad.Titulo"></span></h3>
-                                    <p ng-bind="actividad.Resena"></p>
+                                    <p ng-bind="comunicado.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></p>
+                                    <h3><span ng-bind="comunicado.Titulo"></span></h3>
+                                    <p ng-bind="comunicado.Resena"></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <hr />
                     <div class="list-group">
-                        <a target="_blank" href="{{ actividad.Url }}" class="list-group-item"  ng-repeat="actividad in ActualidadesSecundario">
-                            <p class="list-group-item-text" ng-bind="actividad.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></p>
-                            <h4 class="list-group-item-heading"><span ng-bind="actividad.Titulo"></span></h4>
+                        <a target="_blank" href="{{ comunicado.Url }}" class="list-group-item"  ng-repeat="comunicado in ComunicadosSecundario">
+                            <p class="list-group-item-text" ng-bind="comunicado.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></p>
+                            <h4 class="list-group-item-heading"><span ng-bind="comunicado.Titulo"></span></h4>
                         </a>
                     </div>
             </div>
@@ -70,6 +70,6 @@
 </section>
 
 @section scripts{
-    <script src="~/Angular/Factories/ActualidadFactory.js"></script>
-    <script src="~/Angular/Controllers/ActualidadController.js"></script>
+    <script src="~/Angular/Factories/ComunicadoFactory.js"></script>
+    <script src="~/Angular/Controllers/ComunicadoController.js"></script>
 }
