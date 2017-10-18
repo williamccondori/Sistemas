@@ -26,21 +26,8 @@
             <div class="well well-sm">
                     <h1>@ViewBag.Title</h1>
                     <hr />
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="comunicado in ComunicadosPrincipal">
-                            <div class="thumbnail">
-                                <a target="_blank" href="{{ comunicado.Url }}"><img src="{{ comunicado.Recurso }}" alt="imagen"></a>
-                                <div class="caption">
-                                    <p ng-bind="comunicado.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></p>
-                                    <h3><span ng-bind="comunicado.Titulo"></span></h3>
-                                    <p ng-bind="comunicado.Resena"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
                     <div class="list-group">
-                        <a target="_blank" href="{{ comunicado.Url }}" class="list-group-item"  ng-repeat="comunicado in ComunicadosSecundario">
+                        <a target="_blank" href="@Url.Action("Detalle","Comunicado")/{{ comunicado.Url }}" class="list-group-item"  ng-repeat="comunicado in Comunicados">
                             <p class="list-group-item-text" ng-bind="comunicado.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></p>
                             <h4 class="list-group-item-heading"><span ng-bind="comunicado.Titulo"></span></h4>
                         </a>

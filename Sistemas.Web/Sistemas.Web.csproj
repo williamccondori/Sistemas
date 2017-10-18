@@ -146,6 +146,9 @@
     <Content Include="Views\Comunicado\Index.cshtml" />
     <Content Include="Views\Publicacion\Index.cshtml" />
     <Content Include="Views\Noticia\Detalle.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
+    <Content Include="Views\GaleriaFoto\Index.cshtml" />
+    <Content Include="Views\GaleriaVideo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -153,6 +156,9 @@
     <Compile Include="Controllers\EscuelaController.cs" />
     <Compile Include="Controllers\Publicacion\ActualidadController.cs" />
     <Compile Include="Controllers\Publicacion\ComunicadoController.cs" />
+    <Compile Include="Controllers\Publicacion\EventoController.cs" />
+    <Compile Include="Controllers\Publicacion\GaleriaFotoController.cs" />
+    <Compile Include="Controllers\Publicacion\GaleriaVideoController.cs" />
     <Compile Include="Controllers\Publicacion\NoticiaController.cs" />
     <Compile Include="Controllers\Publicacion\PublicacionController.cs" />
     <Compile Include="Global.asax.cs">

@@ -46,6 +46,7 @@
     <Compile Include="Shared\BaseDto.cs" />
     <Compile Include="Sitio\AutorResenaDto.cs" />
     <Compile Include="Sitio\DetallePublicacionDto.cs" />
+    <Compile Include="Sitio\EventoDto.cs" />
     <Compile Include="Sitio\GradoAcademicoDto.cs" />
     <Compile Include="Sitio\PublicacionDto.cs" />
     <Compile Include="Sitio\ResenaDto.cs" />

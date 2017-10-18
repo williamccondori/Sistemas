@@ -39,7 +39,7 @@ namespace Sistemas.Datos.Repositorios
                 _sistemasContext.GuardarCambios();
 
                 string tituloFormateado = nuevaPublicacion.DescripcionTitulo.Replace(' ', '-').ToLower(CultureInfo.CurrentCulture);
-                string[] caracteres = { "\"", "“", "”" };
+                string[] caracteres = { "\"", "“", "”", "!", "¡", "#", "¿", "?" };
                 foreach (var caracter in caracteres)
                 {
                     tituloFormateado = tituloFormateado.Replace(caracter, "");

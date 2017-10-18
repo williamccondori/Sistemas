@@ -1,0 +1,39 @@
+﻿@{ ViewBag.Title = "Eventos"; }
+
+<section>
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Publicaciones</h3>
+                </div>
+
+                <div class="list-group">
+                    <a href="@Url.Action("Index", "Noticia")" class="list-group-item">Noticias</a>
+                    <a href="@Url.Action("Index", "Evento")" class="list-group-item active">Eventos</a>
+                    <a href="@Url.Action("Index", "Comunicado")" class="list-group-item">Comunicados</a>
+                    <a href="@Url.Action("Index", "Actualidad")" class="list-group-item">Actualidades tecnológicas</a>
+                    <a href="@Url.Action("Index", "Publicacion")" class="list-group-item">Publicaciones</a>
+                    <a href="@Url.Action("Index", "GaleriaFoto")" class="list-group-item">Galería de fotos</a>
+                    <a href="@Url.Action("Index", "GaleriaVideo")" class="list-group-item">Galería de vídeos</a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <section>
+                
+            </section>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/Angular/Factories/NoticiaFactory.js"></script>
+    <script src="~/Angular/Controllers/NoticiaController.js"></script>
+}
