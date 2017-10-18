@@ -49,6 +49,7 @@
     <Compile Include="Sitio\TipoDetallePublicacionService.cs" />
     <Compile Include="Sitio\TipoPublicacionService.cs" />
     <Compile Include="Sitio\TipoResenaService.cs" />
+    <Compile Include="Web\ActualidadService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sistemas.Datos\Sistemas.Datos.csproj">
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\Sistemas.Entidades\Sistemas.Entidades.csproj">
       <Project>{C2B3849A-D19A-44FF-95CE-D14ACF99A7C8}</Project>
       <Name>Sistemas.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sistemas.Externos\Sistemas.Externos.csproj">
+      <Project>{FC7298CC-15FC-4799-9DC2-5CD5CD41DEE3}</Project>
+      <Name>Sistemas.Externos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sistemas.Repositorios\Sistemas.Repositorios.csproj">
       <Project>{256489F2-E289-498F-85B2-1F3CB16E00F9}</Project>

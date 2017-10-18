@@ -57,7 +57,7 @@
                                 <th class="col-xs-2">Código</th>
                                 <th>Título</th>
                                 <th>Tipo de publicación</th>
-                                <th><button class="btn btn-xs btn-success" ng-click="CrearPublicacion()">Crear</button></th>
+                                <th class="col-xs-2 text-center"><button class="btn btn-xs btn-success" ng-click="CrearPublicacion()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,9 +65,9 @@
                                 <td><span ng-bind="publicacion.Id"></span></td>
                                 <td><span ng-bind="publicacion.TipoPublicacion.Descripcion"></span></td>
                                 <td><span ng-bind="publicacion.Titulo"></span></td>
-                                <td>
-                                    <button class="btn btn-xs btn-warning" ng-click="ModificarPublicacion(publicacion)">Modificar</button>
-                                    <button class="btn btn-xs btn-danger" ng-click="EliminarPublicacion(publicacion)">Eliminar</button>
+                                <td class="col-xs-2 text-center">
+                                    <button class="btn btn-xs btn-warning" ng-click="ModificarPublicacion(publicacion)"><span class="glyphicon glyphicon-edit"></span></button>
+                                    <button class="btn btn-xs btn-danger" ng-click="EliminarPublicacion(publicacion)"><span class="glyphicon glyphicon-remove-sign"></span></button>
                                 </td>
                             </tr>
                         </tbody>

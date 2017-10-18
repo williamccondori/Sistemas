@@ -73,16 +73,16 @@
                                             <tr>
                                                 <th class="col-xs-2">Código</th>
                                                 <th>Descripción</th>
-                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearTipoPublicacion()">Crear</button></th>
+                                                <th class="col-xs-2 text-center"><button type="button" class="btn btn-xs btn-success" ng-click="CrearTipoPublicacion()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="tipoPublicacion in TiposPublicacion">
                                                 <td><span class="label label-primary" ng-bind="tipoPublicacion.Id"></span></td>
                                                 <td><span ng-bind="tipoPublicacion.Descripcion"></span></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarTipoPublicacion(tipoPublicacion)">Modificar</button>
-                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarTipoPublicacion(tipoPublicacion)">Eliminar</button>
+                                                <td class="col-xs-2 text-center">
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarTipoPublicacion(tipoPublicacion)"><span class="glyphicon glyphicon-edit"></span></button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarTipoPublicacion(tipoPublicacion)"><span class="glyphicon glyphicon-remove-sign"></span></button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -97,16 +97,16 @@
                                             <tr>
                                                 <th class="col-xs-2">Código</th>
                                                 <th>Descripción</th>
-                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearTipoDetallePublicacion()">Crear</button></th>
+                                                <th class="col-xs-2 text-center"><button type="button" class="btn btn-xs btn-success" ng-click="CrearTipoDetallePublicacion()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="tipoDetallePublicacion in TiposDetallePublicacion">
                                                 <td><span class="label label-primary" ng-bind="tipoDetallePublicacion.Id"></span></td>
                                                 <td><span ng-bind="tipoDetallePublicacion.Descripcion"></span></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarTipoDetallePublicacion(tipoDetallePublicacion)">Modificar</button>
-                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarTipoDetallePublicacion(tipoDetallePublicacion)">Eliminar</button>
+                                                <td class="col-xs-2 text-center">
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarTipoDetallePublicacion(tipoDetallePublicacion)"><span class="glyphicon glyphicon-edit"></span></button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarTipoDetallePublicacion(tipoDetallePublicacion)"><span class="glyphicon glyphicon-remove-sign"></span></button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -121,16 +121,16 @@
                                             <tr>
                                                 <th class="col-xs-2">Código</th>
                                                 <th>Descripción</th>
-                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearTipoResena()">Crear</button></th>
+                                                <th class="col-xs-2 text-center"><button type="button" class="btn btn-xs btn-success" ng-click="CrearTipoResena()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="tipoResena in TiposResena">
                                                 <td><span class="label label-primary" ng-bind="tipoResena.Id"></span></td>
                                                 <td><span ng-bind="tipoResena.Descripcion"></span></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarTipoResena(tipoResena)">Modificar</button>
-                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarTipoResena(tipoResena)">Eliminar</button>
+                                                <td class="col-xs-2 text-center">
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarTipoResena(tipoResena)"><span class="glyphicon glyphicon-edit"></span></button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarTipoResena(tipoResena)"><span class="glyphicon glyphicon-remove-sign"></span></button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -163,7 +163,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="panel-footer text-right">
-                                                    <button type="button" class="btn btn-default" ng-click="CerrarTipoPublicacion()">Cerrar</button>
+                                                    <button type="button" class="btn btn-default" ng-click="CerrarTipoPublicacion()"><span class="glyphicon glyphicon-plus-sign"></span></button>
                                                     <button type="button" class="btn btn-success" ng-click="GuardarTipoPublicacion()"><span ng-bind="TextoBotonGuardar()"></span></button>
                                                 </div>
                                             </div>
@@ -197,7 +197,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="panel-footer text-right">
-                                                    <button type="button" class="btn btn-default" ng-click="CerrarTipoDetallePublicacion()">Cerrar</button>
+                                                    <button type="button" class="btn btn-default" ng-click="CerrarTipoDetallePublicacion()"><span class="glyphicon glyphicon-plus-sign"></span></button>
                                                     <button type="button" class="btn btn-success" ng-click="GuardarTipoDetallePublicacion()"><span ng-bind="TextoBotonGuardar()"></span></button>
                                                 </div>
                                             </div>
@@ -260,16 +260,16 @@
                                             <tr>
                                                 <th class="col-xs-2">Código</th>
                                                 <th>Grado académico</th>
-                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearGradoAcademico()">Crear</button></th>
+                                                <th class="col-xs-2 text-center"><button type="button" class="btn btn-xs btn-success" ng-click="CrearGradoAcademico()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="gradoAcademico in GradosAcademicos">
                                                 <td><span class="text-id" ng-bind="gradoAcademico.Id"></span></td>
                                                 <td><span ng-bind="gradoAcademico.Titulo"></span></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarGradoAcademico(gradoAcademico)">Modificar</button>
-                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarGradoAcademico(gradoAcademico)">Eliminar</button>
+                                                <td class="col-xs-2 text-center">
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarGradoAcademico(gradoAcademico)"><span class="glyphicon glyphicon-edit"></span></button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarGradoAcademico(gradoAcademico)"><span class="glyphicon glyphicon-remove-sign"></span></button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -286,7 +286,7 @@
                                                 <th>Nombre</th>
                                                 <th>Apellido</th>
                                                 <th>Grado académico</th>
-                                                <th><button type="button" class="btn btn-xs btn-success" ng-click="CrearAutorResena()">Crear</button></th>
+                                                <th class="col-xs-2 text-center"><button type="button" class="btn btn-xs btn-success" ng-click="CrearAutorResena()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -295,9 +295,9 @@
                                                 <td><span ng-bind="autorResena.Nombre"></span></td>
                                                 <td><span ng-bind="autorResena.Apellido"></span></td>
                                                 <td><span ng-bind="autorResena.GradoAcademico.Titulo"></span></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarAutorResena(autorResena)">Modificar</button>
-                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarAutorResena(autorResena)">Eliminar</button>
+                                                <td class="col-xs-2 text-center">
+                                                    <button type="button" class="btn btn-xs btn-warning" ng-click="ModificarAutorResena(autorResena)"><span class="glyphicon glyphicon-edit"></span></button>
+                                                    <button type="button" class="btn btn-xs btn-danger" ng-click="EliminarAutorResena(autorResena)"><span class="glyphicon glyphicon-remove-sign"></span></button>
                                                 </td>
                                             </tr>
                                         </tbody>

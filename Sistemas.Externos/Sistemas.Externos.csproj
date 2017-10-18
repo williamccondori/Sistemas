@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RSS\Lector.cs" />
+    <Compile Include="RSS\Modelos\Articulo.cs" />
+    <Compile Include="RSS\Modelos\Rss.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

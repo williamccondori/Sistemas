@@ -57,7 +57,7 @@
                                 <th class="col-xs-2">Código</th>
                                 <th>Tipo de reseña</th>
                                 <th>Título</th>
-                                <th><button class="btn btn-xs btn-success" ng-click="CrearResena()">Crear</button></th>
+                                <th class="col-xs-2 text-center"><button class="btn btn-xs btn-success" ng-click="CrearResena()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,9 +65,9 @@
                                 <td><span ng-bind="resena.Id"></span></td>
                                 <td><span ng-bind="resena.TipoResena.Descripcion"></span></td>
                                 <td><span ng-bind="resena.Titulo"></span></td>
-                                <td>
-                                    <button class="btn btn-xs btn-warning" ng-click="ModificarResena(resena)">Modificar</button>
-                                    <button class="btn btn-xs btn-danger" ng-click="EliminarResena(resena)">Eliminar</button>
+                                <td class="col-xs-2 text-center">
+                                    <button class="btn btn-xs btn-warning" ng-click="ModificarResena(resena)"><span class="glyphicon glyphicon-edit"></span></button>
+                                    <button class="btn btn-xs btn-danger" ng-click="EliminarResena(resena)"><span class="glyphicon glyphicon-remove-sign"></span></button>
                                 </td>
                             </tr>
                         </tbody>

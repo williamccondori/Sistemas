@@ -49,6 +49,7 @@
     <Compile Include="Sitio\ITipoDetallePublicacionService.cs" />
     <Compile Include="Sitio\ITipoPublicacionService.cs" />
     <Compile Include="Sitio\ITipoResenaService.cs" />
+    <Compile Include="Web\IActualidadService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sistemas.Dtos\Sistemas.Dtos.csproj">
