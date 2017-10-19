@@ -42,7 +42,7 @@ namespace Sistemas.Web.Controllers.Publicacion
             {
                 Api api = new Api(_ruta);
 
-                PublicacionDto noticia = api.Ejecutar<PublicacionDto>(string.Format("noticia/buscar/{0}", idPublicacion));
+                PublicacionDto noticia = api.Ejecutar<PublicacionDto>(string.Format("publicacion/buscar/{0}", idPublicacion));
 
                 return Response<PublicacionDto>.Correcto(noticia);
 
