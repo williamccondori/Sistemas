@@ -93,9 +93,11 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Web\Acreditacion\AcreditacionController.cs" />
+    <Compile Include="Controllers\Web\Acreditacion\AutoEvaluacionController.cs" />
     <Compile Include="Controllers\Web\Informacion\ConvenioController.cs" />
+    <Compile Include="Controllers\Web\Informacion\InfraestructuraController.cs" />
     <Compile Include="Controllers\Web\Informacion\ServicioController.cs" />
-    <Compile Include="Controllers\Web\Nosotros\PalabraController.cs" />
+    <Compile Include="Controllers\Web\Nosotros\PalabraDirectorController.cs" />
     <Compile Include="Controllers\Web\Publicacion\ActualidadController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\Web\Publicacion\ComunicadoController.cs" />
@@ -119,7 +121,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controllers\Web\Servicio\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sistemas.Dtos\Sistemas.Dtos.csproj">
       <Project>{DA3DB3A4-3975-4685-9952-3FD99BC88342}</Project>

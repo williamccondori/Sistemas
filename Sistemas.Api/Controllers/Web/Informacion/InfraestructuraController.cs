@@ -8,12 +8,12 @@ using System.Web.Http;
 
 namespace Sistemas.Api.Controllers.Web.Publicacion
 {
-    [RoutePrefix("api/convenio")]
-    public class ConvenioController : BaseController
+    [RoutePrefix("api/infraestructura")]
+    public class InfraestructuraController : BaseController
     {
         private IPublicacionService _publicacionService;
 
-        private const string _convenio = "CV";
+        private const string _infraestructura = "IN";
 
         [Route(Predeterminado)]
         [HttpGet]
@@ -23,9 +23,9 @@ namespace Sistemas.Api.Controllers.Web.Publicacion
             {
                 _publicacionService = new PublicacionService();
 
-                IList<PublicacionDto> convenios = _publicacionService.ObtenerXTipo(_convenio);
+                IList<PublicacionDto> infraestructuras = _publicacionService.ObtenerXTipo(_infraestructura);
 
-                return Response<IList<PublicacionDto>>.Correcto(convenios);
+                return Response<IList<PublicacionDto>>.Correcto(infraestructuras);
             });
         }
     }

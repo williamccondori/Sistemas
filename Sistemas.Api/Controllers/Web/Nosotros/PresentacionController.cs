@@ -22,9 +22,9 @@ namespace Sistemas.Api.Controllers.Web.Nosotros
             {
                 _resenaService = new ResenaService();
 
-                ResenaDto resena = _resenaService.BuscarXTipo(_presentacion);
+                ResenaDto presentacion = _resenaService.BuscarXTipo(_presentacion);
 
-                return Response<ResenaDto>.Correcto(resena);
+                return Response<ResenaDto>.Correcto(presentacion);
             });
         }
     }

@@ -7,12 +7,12 @@ using System.Web.Http;
 
 namespace Sistemas.Api.Controllers.Web.Nosotros
 {
-    [RoutePrefix("api/palabra")]
-    public class PalabraController : BaseController
+    [RoutePrefix("api/auto_evaluacion")]
+    public class AutoEvaluacionController : BaseController
     {
         private IResenaService _resenaService;
 
-        private const string _palabra = "PA";
+        private const string _autoEvaluacion = "AE";
 
         [Route(Predeterminado)]
         [HttpGet]
@@ -22,9 +22,9 @@ namespace Sistemas.Api.Controllers.Web.Nosotros
             {
                 _resenaService = new ResenaService();
 
-                ResenaDto resena = _resenaService.BuscarXTipo(_palabra);
+                ResenaDto autoEvaluacion = _resenaService.BuscarXTipo(_autoEvaluacion);
 
-                return Response<ResenaDto>.Correcto(resena); ;
+                return Response<ResenaDto>.Correcto(autoEvaluacion);
             });
         }
     }

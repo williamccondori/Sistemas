@@ -7,12 +7,12 @@ using System.Web.Http;
 
 namespace Sistemas.Api.Controllers.Web.Nosotros
 {
-    [RoutePrefix("api/acreditacion")]
-    public class AcreditacionController : BaseController
+    [RoutePrefix("api/palabra_director")]
+    public class PalabraDirectorController : BaseController
     {
         private IResenaService _resenaService;
 
-        private const string _acreditacion = "AC";
+        private const string _palabraDirector = "PA";
 
         [Route(Predeterminado)]
         [HttpGet]
@@ -22,9 +22,9 @@ namespace Sistemas.Api.Controllers.Web.Nosotros
             {
                 _resenaService = new ResenaService();
 
-                ResenaDto acreditacion = _resenaService.BuscarXTipo(_acreditacion);
+                ResenaDto palabra = _resenaService.BuscarXTipo(_palabraDirector);
 
-                return Response<ResenaDto>.Correcto(acreditacion);
+                return Response<ResenaDto>.Correcto(palabra); ;
             });
         }
     }
