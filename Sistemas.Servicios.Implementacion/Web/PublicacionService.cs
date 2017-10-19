@@ -25,18 +25,25 @@ namespace Sistemas.Servicios.Implementacion.Web
 
             ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerXTipoXAnio(idTipoPublicacion, anio);
 
-            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).ToList();
+            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).OrderByDescending(p => p.Emision).ToList();
 
             return publicacionesDto;
         }
 
-        public IList<PublicacionDto> ObtenerXTipoHistorico(string idTipoPublicacion, int anio)
+        public IList<PublicacionDto> ObtenerHistoricoXTipo(string idTipoPublicacion, int anio)
         {
             ICollection<PublicacionEntity> publicaciones = _publicacionRepository.ObtenerXTipoXAnio(idTipoPublicacion, anio);
 
-            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).ToList();
+            List<PublicacionDto> publicacionesDto = publicaciones.Select(p => MapearPublicacion(p)).OrderByDescending(p => p.Emision).ToList();
 
             return publicacionesDto;
+        }
+
+        public PublicacionDto BuscarXId(long idPublicacion)
+        {
+            PublicacionEntity publicacion = _publicacionRepository.ObtenerXId(idPublicacion);
+
+            return MapearPublicacion(publicacion);
         }
 
         public PublicacionDto MapearPublicacion(PublicacionEntity publicacion)
@@ -82,13 +89,6 @@ namespace Sistemas.Servicios.Implementacion.Web
             };
 
             return publicacionDto;
-        }
-
-        public PublicacionDto ObtenerXId(long idPublicacion)
-        {
-            PublicacionEntity publicacion = _publicacionRepository.ObtenerXId(idPublicacion);
-
-            return MapearPublicacion(publicacion);
         }
     }
 }

@@ -3,12 +3,12 @@ using Sistemas.Dtos.Shared;
 using Sistemas.Dtos.Sitio;
 using Sistemas.Entidades;
 using Sistemas.Repositorios;
-using Sistemas.Servicios.Sitio;
+using Sistemas.Servicios.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sistemas.Servicios.Implementacion.Sitio
+namespace Sistemas.Servicios.Implementacion.Web
 {
     public class ResenaService : IResenaService
     {
@@ -19,50 +19,20 @@ namespace Sistemas.Servicios.Implementacion.Sitio
             _resenaRepository = new ResenaRepository();
         }
 
-        public void Guardar(ResenaDto resenaDto)
-        {
-            if (resenaDto.Estado == EstadoObjeto.Nuevo)
-            {
-                ResenaEntity resena = ResenaEntity.Crear(resenaDto.IdTipoResena, resenaDto.IdAutorResena, resenaDto.Titulo
-                    , resenaDto.Subtitulo, resenaDto.Resumen, resenaDto.Resena, resenaDto.Recurso, resenaDto.Usuario);
-
-                resena.ValidarObligatorios();
-
-                _resenaRepository.Crear(resena);
-            }
-            else if (resenaDto.Estado == EstadoObjeto.Modificado)
-            {
-                ResenaEntity resena = _resenaRepository.Buscar(resenaDto.Id);
-                resena.Modificar(resenaDto.IdTipoResena, resenaDto.IdAutorResena, resenaDto.Titulo
-                    , resenaDto.Subtitulo, resenaDto.Resumen, resenaDto.Resena, resenaDto.Recurso, resenaDto.Usuario);
-                _resenaRepository.Modificar();
-            }
-            else if (resenaDto.Estado == EstadoObjeto.Borrado)
-            {
-                _resenaRepository.Eliminar(resenaDto.Id);
-            }
-            else
-            {
-                throw new Exception("El método no es el correcto");
-            }
-        }
-
-        public IList<ResenaDto> ObtenerXTipo(string idTipoResena)
+        public ResenaDto BuscarXTipo(string idTipoResena)
         {
             ICollection<ResenaEntity> resenas = _resenaRepository.ObtenerPorTipo(idTipoResena);
 
             List<ResenaDto> resenasDto = resenas.Select(p => MapearResena(p)).ToList();
 
-            return resenasDto;
-        }
+            ResenaDto resenaDto = resenasDto.FirstOrDefault();
 
-        public IList<ResenaDto> ObtenerTodo()
-        {
-            ICollection<ResenaEntity> resenas = _resenaRepository.ObtenerTodo();
+            if (resenaDto == null)
+            {
+                throw new Exception();
+            }
 
-            List<ResenaDto> resenasDto = resenas.Select(p => MapearResena(p)).ToList();
-
-            return resenasDto;
+            return resenaDto;
         }
 
         private ResenaDto MapearResena(ResenaEntity resena)

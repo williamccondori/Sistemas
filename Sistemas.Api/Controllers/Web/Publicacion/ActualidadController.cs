@@ -6,7 +6,7 @@ using Sistemas.Servicios.Web;
 using System.Collections.Generic;
 using System.Web.Http;
 
-namespace Sistemas.Api.Controllers
+namespace Sistemas.Api.Controllers.Web.Publicacion
 {
     [RoutePrefix("api/actualidad")]
     public class ActualidadController : BaseController
@@ -20,7 +20,9 @@ namespace Sistemas.Api.Controllers
             return Ejecutar(() =>
             {
                 _actualidadService = new ActualidadService();
+
                 IList<PublicacionDto> actualidades = _actualidadService.Obtener();
+
                 return Response<IList<PublicacionDto>>.Correcto(actualidades);
             });
         }
@@ -32,7 +34,9 @@ namespace Sistemas.Api.Controllers
             return Ejecutar(() =>
             {
                 _actualidadService = new ActualidadService();
+
                 IList<PublicacionDto> actualidades = _actualidadService.ObtenerHistorico(anio);
+
                 return Response<IList<PublicacionDto>>.Correcto(actualidades);
             });
         }

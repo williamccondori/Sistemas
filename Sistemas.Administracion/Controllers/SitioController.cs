@@ -204,7 +204,7 @@ namespace Sistemas.Administracion.Controllers
             return Json(Ejecutar(() =>
             {
                 _resenaService = new ResenaService();
-                IList<ResenaDto> ResenaesDto = _resenaService.ObtenerPorTipo(idTipoResena);
+                IList<ResenaDto> ResenaesDto = _resenaService.ObtenerXTipo(idTipoResena);
                 return Response<IList<ResenaDto>>.Correcto(ResenaesDto);
             }), JsonRequestBehavior.AllowGet);
         }

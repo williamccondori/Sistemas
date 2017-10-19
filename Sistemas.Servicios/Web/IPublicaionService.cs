@@ -6,7 +6,7 @@ namespace Sistemas.Servicios.Web
     public interface IPublicacionService
     {
         IList<PublicacionDto> ObtenerXTipo(string idTipoPublicacion);
-        IList<PublicacionDto> ObtenerXTipoHistorico(string idTipoPublicacion, int anio);
-        PublicacionDto ObtenerXId(long idPublicacion);
+        IList<PublicacionDto> ObtenerHistoricoXTipo(string idTipoPublicacion, int anio);
+        PublicacionDto BuscarXId(long idPublicacion);
     }
 }

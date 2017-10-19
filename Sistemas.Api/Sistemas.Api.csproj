@@ -92,12 +92,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ActualidadController.cs" />
+    <Compile Include="Controllers\Web\Acreditacion\AcreditacionController.cs" />
+    <Compile Include="Controllers\Web\Informacion\ConvenioController.cs" />
+    <Compile Include="Controllers\Web\Informacion\ServicioController.cs" />
+    <Compile Include="Controllers\Web\Nosotros\PalabraController.cs" />
+    <Compile Include="Controllers\Web\Publicacion\ActualidadController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
-    <Compile Include="Controllers\ComunicadoController.cs" />
-    <Compile Include="Controllers\PublicacionController.cs" />
-    <Compile Include="Controllers\NoticiaController.cs" />
-    <Compile Include="Controllers\PresentacionController.cs" />
+    <Compile Include="Controllers\Web\Publicacion\ComunicadoController.cs" />
+    <Compile Include="Controllers\Web\Publicacion\EventoController.cs" />
+    <Compile Include="Controllers\Web\Publicacion\GaleriaFotoController.cs" />
+    <Compile Include="Controllers\Web\Publicacion\GaleriaVideoController.cs" />
+    <Compile Include="Controllers\Web\Publicacion\PublicacionController.cs" />
+    <Compile Include="Controllers\Web\Publicacion\NoticiaController.cs" />
+    <Compile Include="Controllers\Web\Nosotros\PresentacionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -112,10 +119,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Sistemas.Dtos\Sistemas.Dtos.csproj">
       <Project>{DA3DB3A4-3975-4685-9952-3FD99BC88342}</Project>

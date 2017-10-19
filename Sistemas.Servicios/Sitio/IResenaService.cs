@@ -7,6 +7,6 @@ namespace Sistemas.Servicios.Sitio
     {
         void Guardar(ResenaDto resenaDto);
         IList<ResenaDto> ObtenerTodo();
-        IList<ResenaDto> ObtenerPorTipo(string idTipoResena);
+        IList<ResenaDto> ObtenerXTipo(string idTipoResena);
     }
 }
