@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="es-es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,32 +9,116 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 </head>
 <body ng-app="EpisApp">
-    <div class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Escuela Profesional de Ingeniería de Sitemas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="@Url.Action("Index", "Escuela")">Inicio</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#contenido" aria-controls="contenido"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="contenido">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="nosotros" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Nosotros
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="nosotros">
+                                    <a class="dropdown-item" href="@Url.Action("Index","nosotros")">Nosotros</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","palabra")">Palabras del director</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","misionvision")">Misión y visión</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","objetivo")">Objetivos educacionales</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","resultado")">Resultados del estudiante</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","perfil")">Perfil profesional</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","planadocente")">Plana docente</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="informacion" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Información
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="informacion">
+                                    <a class="dropdown-item" href="@Url.Action("Index","admision")">Admisión</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","acreditacion")">Acreditación</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","servicio")">Servicios</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","infraestructura")">Infraestructura</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","convenio")">Convenios</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","estudiante")">Estudiantes destacados</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="publicaciones" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Publicaciones
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="publicaciones">
+                                    <a class="dropdown-item" href="@Url.Action("Index","noticia")">Noticias</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","evento")">Eventos</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","comunicado")">Comunicados</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","actualidad")">Actualidades tecnológicas</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","publicacion")">Publicaciones</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","galeriafoto")">Galería de fotos</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","galeriavideo")">Galería de vídeos</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="investigacion" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Investigación
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="investigacion">
+                                    <a class="dropdown-item" href="@Url.Action("Index","planestudio")">Plan de estudio</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","mallacurricular")">Malla curricular</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","concurso")">Concurso de proyectos</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","trabajos")">Trabajos académicos <span class="badge badge-danger">Nuevo!</span></a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="servicios" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Servicios
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="servicios">
+                                    <a class="dropdown-item" href="http://aula.upt.edu.pe/" target="_blank">Aula virtual</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","bolsatrabajo")">Bolsa de trabajo</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","documento")">Documentos</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","transparencia")">Transparencia</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","episcontesta")">EPIS CONTESTA <span class="badge badge-danger">Nuevo!</span></a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="contacto" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Contacto
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="contacto">
+                                    <a class="dropdown-item" href="@Url.Action("Index","contacto")">Contacto</a>
+                                    <a class="dropdown-item" href="https://www.facebook.com/uptsistemas/" target="_blank">Facebook</a>
+                                    <a class="dropdown-item" href="https://twitter.com/uptsistemas/" target="_blank">Twitter</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 @RenderBody()
             </div>
         </div>
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/umd/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
     <script src="~/Scripts/angular.min.js"></script>

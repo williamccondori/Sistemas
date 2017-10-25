@@ -1,72 +1,44 @@
 ﻿@{ ViewBag.Title = "Noticias"; }
 
-<section>
+<section ng-controller="NoticiaController" ng-init="Iniciar()">
     <div class="row">
-        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Publicaciones</h3>
-                </div>
-
-                <div class="list-group">
-                    <a href="@Url.Action("Index", "Noticia")" class="list-group-item active">Noticias</a>
-                    <a href="@Url.Action("Index", "Evento")" class="list-group-item">Eventos</a>
-                    <a href="@Url.Action("Index", "Comunicado")" class="list-group-item">Comunicados</a>
-                    <a href="@Url.Action("Index", "Actualidad")" class="list-group-item">Actualidades tecnológicas</a>
-                    <a href="@Url.Action("Index", "Publicacion")" class="list-group-item">Publicaciones</a>
-                    <a href="@Url.Action("Index", "GaleriaFoto")" class="list-group-item">Galería de fotos</a>
-                    <a href="@Url.Action("Index", "GaleriaVideo")" class="list-group-item">Galería de vídeos</a>
-                </div>
-
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+            <h4>Publicaciones</h4>
+            <hr />
+            <div class="list-group">
+                <a href="@Url.Action("Index", "Noticia")" class="list-group-item list-group-item-action active">Noticias</a>
+                <a href="@Url.Action("Index", "Evento")" class="list-group-item list-group-item-action">Eventos</a>
+                <a href="@Url.Action("Index", "Comunicado")" class="list-group-item list-group-item-action">Comunicados</a>
+                <a href="@Url.Action("Index", "Actualidad")" class="list-group-item list-group-item-action">Actualidades tecnológicas</a>
+                <a href="@Url.Action("Index", "Publicacion")" class="list-group-item list-group-item-action">Publicaciones</a>
+                <a href="@Url.Action("Index", "GaleriaFoto")" class="list-group-item list-group-item-action">Galería de fotos</a>
+                <a href="@Url.Action("Index", "GaleriaVideo")" class="list-group-item list-group-item-action">Galería de vídeos</a>
             </div>
-
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <section  ng-controller="NoticiaController" ng-init="Iniciar()">
-                <div class="well well-sm">
-                    <h1>@ViewBag.Title</h1>
-                    <hr />
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="noticia in NoticiasPrincipal">
-                            <div class="thumbnail">
-                                <a href="@Url.Action("Detalle","Noticia")/{{ noticia.Url }}"><img src="{{ noticia.Recurso }}" alt="imagen"></a>
-                                <div class="caption">
-                                    <p ng-bind="noticia.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></p>
-                                    <h3><span ng-bind="noticia.Titulo"></span></h3>
-                                    <p ng-bind="noticia.Resumen"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="list-group">
-                        <a href="@Url.Action("Detalle","Noticia")/{{ noticia.Url }}" class="list-group-item" ng-repeat="noticia in NoticiasSecundario">
-                            <p class="list-group-item-text" ng-bind="noticia.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></p>
-                            <h4 class="list-group-item-heading"><span ng-bind="noticia.Titulo"></span></h4>
-                        </a>
+        <div class="col-12 col-sm-12 col-md-9 col-lg-9">
+            <h4>@ViewBag.Title</h4>
+            <hr />
+            <div class="card-columns">
+                <div class="card" ng-repeat="noticia in NoticiasPrincipal">
+                    <a href="@Url.Action("Detalle","Noticia")/{{ noticia.Url }}"><img class="card-img-top" ng-src="{{ noticia.Recurso }}" alt="imagen"></a>
+                    <div class="card-body">
+                        <p ng-bind="noticia.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></p>
+                        <h4 class="card-title"><span ng-bind="noticia.Titulo"></span></h4>
+                        <p class="card-text"><span ng-bind="noticia.Resumen"></span></p>
                     </div>
                 </div>
-            </section>
-        </div>
-        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Próximos eventos</h3>
-                </div>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">Law Students Awards Ceremony</h4>
-                        <p class="list-group-item-text">January 1, 2018 8:00 am / January 9, 2018 9:00 pm</p>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">Homecoming and Reunion Weekend</h4>
-                        <p class="list-group-item-text">November 11, 2018 8:00 am / November 13, 2018 11:00 am</p>
-                    </a>
-                </div>
             </div>
-
+            <h4>Más noticias</h4>
+            <hr />
+            <div class="list-group">
+                <a href="@Url.Action("Detalle","Noticia")/{{ noticia.Url }}" class="list-group-item list-group-item-action flex-column align-items-start" ng-repeat="noticia in NoticiasSecundario">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1"><span ng-bind="noticia.Titulo"></span></h5>
+                        <small class="text-muted"><span ng-bind="noticia.Emision | Fecha | date : 'dd/MM/yyyy \'a las\' h:mma'"></span></small>
+                    </div>
+                    <p><span ng-bind="noticia.Resumen"></span></p>
+                </a>
+            </div>
         </div>
     </div>
 </section>

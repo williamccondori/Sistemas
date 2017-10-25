@@ -1,9 +1,14 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Roboto');
+﻿@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700');
 
-body{
-    font-family: 'Libre Baskerville', serif;
+body {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 14px;
 }
 
-p{
-    font-family: 'Roboto', sans-serif;
+.row {
+    margin-bottom: 20px;
+}
+
+p iframe {
+    width: 100% !important;
 }
