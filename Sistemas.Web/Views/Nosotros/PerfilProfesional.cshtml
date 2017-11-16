@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = Model.Titulo;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-2">
+            <section class="app-indice">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action" href="@Url.Action("Index")">Nosotros</a>
+                    <a class="list-group-item list-group-item-action" href="@Url.Action("director")">Palabras del Director</a>
+                    <a class="list-group-item list-group-item-action" href="@Url.Action("misionvision")">Misión y Visión</a>
+                    <a class="list-group-item list-group-item-action" href="@Url.Action("objetivo")">Objetivos</a>
+                    <a class="list-group-item list-group-item-action active" href="@Url.Action("perfilprofesional")">Perfil Profesional</a>
+                    <a class="list-group-item list-group-item-action" href="@Url.Action("objetivoeducacional")">Objetivos Educacionales</a>
+                    <a class="list-group-item list-group-item-action" href="@Url.Action("resultadoaprendizaje")">Resultados del Aprendizaje</a>
+                </div>
+            </section>
+        </div>
+        <div class="col-12 col-md-7">
+            <section>
+                <div class="app-sumilla">
+                    <p>@Model.Sumilla</p>
+                </div>
+                <section>
+                    <p>@Model.Subtitulo</p>
+                    <div>
+                        @foreach (var seccion in @Model.Secciones)
+                        {
+                            <h4 class="app-h4">@seccion.Titulo</h4>
+                            <ul class="app-lista">
+                                @foreach (var elemento in @seccion.Elementos)
+                                {
+                                    <li class="app-elemento">
+                                        <b>@elemento.Titulo</b>
+                                        <span>@elemento.Descripcion</span>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </section>
+            </section>
+        </div>
+        <div class="col-12 col-md-3">
+
+        </div>
+    </div>
+</div>

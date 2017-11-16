@@ -1,14 +1,151 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700');
 
-body {
+body
+{
     font-family: 'Titillium Web', sans-serif;
-    font-size: 14px;
 }
 
-.row {
+.row
+{
     margin-bottom: 20px;
 }
 
-p iframe {
+.container-fluid
+{
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+}
+
+p iframe
+{
     width: 100% !important;
+}
+
+
+
+.app-texto {
+    text-align: justify;
+}
+
+.app-texto-resaltado
+{
+    background: #f2f2f2;
+    margin: 0 0 25px;
+    padding: 25px;
+    width: 100%;
+}
+
+.app-imagen
+{
+    display: block;
+    width: 100%;
+}
+
+.app-sumilla
+{
+    border-bottom: 1px solid rgba(78,78,86,0.6);
+    margin-bottom: 30px;
+}
+
+.app-sumilla p
+{
+    font-weight: 500;
+    text-align: justify;
+}
+
+.app-h4
+{
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 0 15px;
+}
+
+.app-lista{
+    overflow: hidden;
+}
+
+.app-lista li
+{
+    margin: 0 0 6px;
+    position: relative;
+    list-style: none;
+}
+
+.app-lista li:before
+{
+    content: "";
+    left: -15px;
+    position: absolute;
+    top: 8px;
+    display: block;
+    height: 5px;
+    width: 5px;
+    background: #2196F3;
+    border-radius: 0;
+}
+
+.app-indice
+{
+    border-right: 1px solid #2196F3;
+    padding-bottom: 100px;
+}
+
+.app-indice .list-group{
+    border: none !important;
+}
+
+.app-indice .list-group-item
+{
+    display: block;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: none;
+}
+
+
+.app-indice .list-group-item.active
+{
+    background-color: #2196F3 !important;
+    color: #FFF;
+    font-weight: bold;
+}
+.app-indice a.list-group-item
+{
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+    color: #000;
+    font-size: 14px;
+}
+
+.app-indice a.list-group-item:hover
+{
+    background-color: #455a64;
+    color: #FFF;
+}
+
+.app-tabla-trabajos td
+{
+    padding: 5px;
+    font-size: 12px;
+}
+.app-tabla-trabajos th
+{
+    padding: 5px;
+    font-size: 14px;
+}
+.app-tabla-trabajos-area span
+{
+    padding: 1px 6px;
+    background-color: #455a64;
+    color: #FFF;
+}
+
+.app-tabla-trabajos thead th
+{
+    vertical-align: bottom;
+    border-bottom: 2px solid #2196F3;
+    background-color: #2196F3;
+    color: #FFF;
 }

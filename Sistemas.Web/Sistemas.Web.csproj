@@ -174,16 +174,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\EscuelaController.cs" />
+    <Compile Include="Controllers\InvestigacionController.cs" />
+    <Compile Include="Controllers\NosotrosController.cs" />
     <Compile Include="Controllers\Publicacion\ActualidadController.cs" />
     <Compile Include="Controllers\Publicacion\ComunicadoController.cs" />
     <Compile Include="Controllers\Publicacion\EventoController.cs" />
     <Compile Include="Controllers\Publicacion\GaleriaFotoController.cs" />
     <Compile Include="Controllers\Publicacion\GaleriaVideoController.cs" />
     <Compile Include="Controllers\Publicacion\NoticiaController.cs" />
+    <Compile Include="Controllers\Informacion\PalabraController.cs" />
     <Compile Include="Controllers\Publicacion\PublicacionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Investigacion\TrabajoModel.cs" />
+    <Compile Include="Models\Nosotros\ObjetivoModel.cs" />
+    <Compile Include="Models\Nosotros\PerfilProfesionalModel.cs" />
+    <Compile Include="Models\Shared\ElementoLista.cs" />
+    <Compile Include="Models\Nosotros\MisionVisionModel.cs" />
+    <Compile Include="Models\Nosotros\ObjetivoEducacionalModel.cs" />
+    <Compile Include="Models\Nosotros\ResultadoModel.cs" />
+    <Compile Include="Models\Shared\Lista.cs" />
+    <Compile Include="Models\Shared\Pagina.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxy\Api.cs" />
   </ItemGroup>
@@ -204,6 +216,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Nosotros\ObjetivoEducacional.cshtml" />
+    <Content Include="Views\Nosotros\ResultadoAprendizaje.cshtml" />
+    <Content Include="Views\Nosotros\Director.cshtml" />
+    <Content Include="Views\Nosotros\MisionVision.cshtml" />
+    <Content Include="Views\Nosotros\Index.cshtml" />
+    <Content Include="Views\Nosotros\Objetivo.cshtml" />
+    <Content Include="Views\Nosotros\PerfilProfesional.cshtml" />
+    <Content Include="Views\Investigacion\Trabajo.cshtml" />
+    <Content Include="Views\Investigacion\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -213,7 +234,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sistemas.Dtos\Sistemas.Dtos.csproj">

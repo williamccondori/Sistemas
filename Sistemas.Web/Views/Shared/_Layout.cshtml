@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>@ViewBag.Title - Escuela Profesional de Ingeniería de Sitemas</title>
+
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 </head>
 <body ng-app="EpisApp">
@@ -32,7 +33,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="nosotros">
                                     <a class="dropdown-item" href="@Url.Action("Index","nosotros")">Nosotros</a>
-                                    <a class="dropdown-item" href="@Url.Action("Index","palabra")">Palabras del director</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","director")">Palabras del director</a>
                                     <a class="dropdown-item" href="@Url.Action("Index","misionvision")">Misión y visión</a>
                                     <a class="dropdown-item" href="@Url.Action("Index","objetivo")">Objetivos educacionales</a>
                                     <a class="dropdown-item" href="@Url.Action("Index","resultado")">Resultados del estudiante</a>
@@ -110,13 +111,10 @@
                 </nav>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                @RenderBody()
-            </div>
-        </div>
     </div>
+    @RenderBody()
 
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-3.2.1.min.js"></script>
     <script src="~/Scripts/umd/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
